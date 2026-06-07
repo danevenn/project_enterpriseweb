@@ -1,0 +1,18 @@
+allowBuilds:
+  '@prisma/client': true
+  '@prisma/engines': true
+  prisma: true
+  esbuild: true
+  msw: true
+  sharp: true
+  unrs-resolver: true
+  '@firebase/util': false
+  protobufjs: false
+  core-js: false
+
+# next-auth v4 declara peers de React ^17/^18 y Next ≤15; aquí corremos React 19 / Next 16.
+peerDependencyRules:
+  allowedVersions:
+    'next-auth>next': '16'
+    'next-auth>react': '19'
+    'next-auth>react-dom': '19'

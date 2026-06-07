@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// =============================================================================
+// Catálogo de productos — muebles y piezas terminadas a la venta.
+// =============================================================================
+model ProductCategory {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  products    Product[]
+
+  @@map("product_categories")
+}
+
+model Product {
+  id          String          @id @default(cuid())
+  name        String
+  description String?
+  price       Decimal         @db.Decimal(10, 2)
+  stock       Int             @default(0)
+  image       String?
+  categoryId  String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  category    ProductCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+
+  @@map("products")
+}
+
+// =============================================================================
+// Inventario de materiales de taller — maderas, herrajes, acabados, consumibles.
+// =============================================================================
+enum MaterialUnit {
+  UD // unidad
+  M // metro lineal
+  M2 // metro cuadrado
+  M3 // metro cúbico
+  ML // mililitro / metro lineal (acabados)
+  L // litro
+  KG // kilogramo
+}
+
+model MaterialCategory {
+  id          String     @id @default(cuid())
+  name        String     @unique
+  description String?
+  createdAt   DateTime   @default(now())
+  materials   Material[]
+
+  @@map("material_categories")
+}
+
+model Material {
+  id          String           @id @default(cuid())
+  name        String
+  description String?
+  unit        MaterialUnit     @default(UD)
+  stock       Decimal          @default(0) @db.Decimal(12, 3)
+  minStock    Decimal?         @db.Decimal(12, 3)
+  costPerUnit Decimal?         @db.Decimal(10, 2)
+  supplier    String?
+  categoryId  String
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  category    MaterialCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+
+  @@map("materials")
+}
+
+// =============================================================================
+// Portfolio de proyectos — obras mostradas en el sitio público.
+// Los campos compuestos (dimensions, process, testimonial) se guardan como JSON
+// porque su forma es estable y solo se consultan junto al proyecto completo.
+// =============================================================================
+model Project {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  title            String
+  category         String
+  shortDescription String
+  description      String
+  image            String
+  blurDataURL      String
+  gallery          String[]
+  materials        String[]
+  year             Int
+  client           String
+  durationWeeks    Int
+  tags             String[]
+  challenges       String[]
+  techniques       String[]
+  dimensions       Json?
+  process          Json?
+  testimonial      Json?
+  featured         Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@map("projects")
+}

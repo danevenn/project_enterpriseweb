@@ -1,4 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
+import { config as loadEnv } from "dotenv";
+
+// Carga .env.local para tener a mano NEXT_PUBLIC_FIREBASE_* y, sobre todo,
+// E2E_USER_EMAIL / E2E_USER_PASSWORD (usuario Firebase de test) que usa
+// auth.setup.ts. Así solo hay que rellenar un archivo.
+loadEnv({ path: ".env.local" });
 
 // E2E del inventario de Carpintería Los Artesanos.
 // El panel está protegido por NextAuth + Firebase: el proyecto `setup` hace

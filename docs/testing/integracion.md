@@ -65,20 +65,23 @@ servidor completo ni inventar un Express.
 
 ## Cómo se ejecutan aquí
 
-- Base de datos: el **mismo Postgres de Docker** (puerto 5433) pero un **schema
-  `test` aislado**, configurado en `.env.test`. No es Neon (eso es de otro
-  proyecto). Preparar el schema una vez:
+- Base de datos: la **misma instancia Neon** que desarrollo, pero un **schema
+  `test` aislado** (`?schema=test`), configurado en `.env.test`. Conexión
+  **directa** (no-pooled) para que las migraciones y el CRUD de test sean
+  estables. Preparar el schema una vez:
 
   ```bash
-  pnpm exec dotenv -e .env.test -- prisma db push   # o migrate deploy
+  set -a; . ./.env.test; set +a   # carga DATABASE_URL/DIRECT_URL de test
+  pnpm exec prisma db push        # crea las tablas en el schema `test` de Neon
   ```
 
 - Aislamiento: cada producto de test se prefija con `Test-`. `beforeEach` borra
-  esas filas antes de cada caso; `afterAll` limpia y desconecta Prisma. Los datos
-  de desarrollo nunca se tocan.
+  esas filas antes de cada caso; `afterAll` limpia y desconecta Prisma. El schema
+  `test` está separado del `public` de desarrollo, así que los datos reales nunca
+  se tocan.
 
 - Comando: `pnpm test:integration` (usa `vitest.integration.config.ts`, entorno
-  Node y carga de `.env.test`). Requiere Docker arriba.
+  Node y carga de `.env.test`). Requiere conexión a Neon (no necesita Docker).
 
 Archivos: `src/test/integration/products-api.test.ts`,
 `src/test/integration/product-stock-api.test.ts`.

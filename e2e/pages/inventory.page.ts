@@ -48,7 +48,7 @@ export class InventoryPage {
   /** Lee el stock mostrado en una tarjeta concreta. */
   async stockOf(name: string): Promise<number> {
     const card = this.cardByName(name).first();
-    const text = await card.getByText(/ud\./).innerText();
+    const text = await card.getByTestId("product-stock").innerText();
     return Number(text.replace(/\D/g, ""));
   }
 

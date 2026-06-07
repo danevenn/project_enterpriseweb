@@ -23,12 +23,13 @@ test.describe("Inventario de Carpintería Los Artesanos", () => {
 
     await inventory.filterByCategory(CATEGORY);
 
-    const cards = inventory.productCards;
-    const count = await cards.count();
-    expect(count).toBeGreaterThan(0);
-    for (let i = 0; i < count; i++) {
-      await expect(cards.nth(i).getByTestId("product-category")).toHaveText(CATEGORY);
-    }
+    const categoryTags = page.getByTestId("product-category");
+    // Aserciones auto-reintentables: esperan a que el refetch del servidor
+    // termine (keepPreviousData muestra la lista anterior un instante).
+    // 1) No debe quedar NINGUNA tarjeta de otra categoría.
+    await expect(categoryTags.filter({ hasNotText: CATEGORY })).toHaveCount(0);
+    // 2) Debe haber al menos una de la categoría filtrada.
+    await expect(categoryTags.first()).toHaveText(CATEGORY);
   });
 
   test("ajustar el stock con '+' lo incrementa en 2", async ({ page }) => {

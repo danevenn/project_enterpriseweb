@@ -76,6 +76,7 @@ export function ProductCard({ product }: { product: ProductWithCategory }) {
           <Badge
             variant={outOfStock ? "destructive" : "outline"}
             className="min-w-14 justify-center tabular-nums"
+            data-testid="product-stock"
           >
             <motion.span
               key={product.stock}

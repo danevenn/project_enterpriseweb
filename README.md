@@ -59,7 +59,7 @@ El CI (GitHub Actions) ejecuta typecheck, lint y los tests unitarios/integració
 
 ## Desarrollo local
 
-**Requisitos:** Node 20+, pnpm 11.
+**Requisitos:** Node 22+, pnpm 11.
 
 ```bash
 pnpm install                       # instala dependencias (genera el cliente Prisma)

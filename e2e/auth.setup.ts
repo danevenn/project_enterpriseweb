@@ -21,7 +21,8 @@ setup("autenticar en el panel", async ({ page }) => {
   await page.goto("/login");
   await page.getByLabel("Email").fill(email);
   await page.getByLabel("Contraseña").fill(password);
-  await page.getByRole("button", { name: "Entrar" }).click();
+  // `exact` para no chocar con "Entrar como demostración" (que contiene "Entrar").
+  await page.getByRole("button", { name: "Entrar", exact: true }).click();
 
   // El login redirige a /panel al validar la sesión.
   await page.waitForURL("**/panel**");

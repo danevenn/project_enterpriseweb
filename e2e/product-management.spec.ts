@@ -5,11 +5,23 @@ import { InventoryPage } from "./pages/inventory.page";
 const CATEGORY = "Muebles a medida";
 
 test.describe("Inventario de Carpintería Los Artesanos", () => {
+  // Productos creados durante los tests; se borran en afterEach para no dejar
+  // residuo en la base de datos (los tests corren contra la BD real).
+  const createdProducts: string[] = [];
+
+  test.afterEach(async ({ page }) => {
+    if (createdProducts.length === 0) return;
+    const inventory = new InventoryPage(page);
+    for (const name of createdProducts) await inventory.deleteProductByName(name);
+    createdProducts.length = 0;
+  });
+
   test("añadir un nuevo producto aparece en la lista", async ({ page }) => {
     const inventory = new InventoryPage(page);
     await inventory.goto();
 
     const name = `Taburete E2E ${Date.now()}`;
+    createdProducts.push(name);
     await inventory.addProduct({ name, price: 24.9, stock: 8, category: CATEGORY });
 
     await expect(inventory.cardByName(name)).toBeVisible();
@@ -37,6 +49,7 @@ test.describe("Inventario de Carpintería Los Artesanos", () => {
     await inventory.goto();
 
     const name = `Banco E2E ${Date.now()}`;
+    createdProducts.push(name);
     await inventory.addProduct({ name, price: 120, stock: 10, category: CATEGORY });
 
     const before = await inventory.stockOf(name);

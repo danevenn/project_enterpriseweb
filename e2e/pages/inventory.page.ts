@@ -57,4 +57,22 @@ export class InventoryPage {
     const plus = card.getByRole("button", { name: "Aumentar stock" });
     for (let i = 0; i < times; i++) await plus.click();
   }
+
+  /**
+   * Borra (vía API, con la sesión del contexto) todos los productos cuyo nombre
+   * coincida exactamente. Se usa en la limpieza posterior para no dejar residuo
+   * de los tests en la base de datos.
+   */
+  async deleteProductByName(name: string) {
+    const res = await this.page.request.get(
+      `/api/products?search=${encodeURIComponent(name)}`,
+    );
+    if (!res.ok()) return;
+    const products = (await res.json()) as Array<{ id: string; name: string }>;
+    for (const product of products) {
+      if (product.name === name) {
+        await this.page.request.delete(`/api/products/${product.id}`);
+      }
+    }
+  }
 }

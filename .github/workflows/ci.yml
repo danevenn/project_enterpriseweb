@@ -38,6 +38,14 @@ jobs:
       - name: Tests unitarios + componente (con cobertura)
         run: pnpm test:coverage
 
+      - name: Subir cobertura a Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage/lcov.info
+          fail_ci_if_error: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
   # Integración: Route Handlers contra un Postgres real, pero EFÍMERO (service
   # container en el propio runner → localhost, latencia ~0, sin tocar Neon).
   integration:

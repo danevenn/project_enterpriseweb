@@ -1,6 +1,7 @@
 "use server";
 
 import { z } from "zod";
+import { logger } from "@/lib/logger";
 
 const ContactSchema = z.object({
   name: z
@@ -57,7 +58,7 @@ export async function submitContactForm(
 
   await new Promise((r) => setTimeout(r, 600));
 
-  console.info("[contacto] mensaje recibido", {
+  logger.info("[contacto] mensaje recibido", {
     from: parsed.data.email,
     name: parsed.data.name,
     length: parsed.data.message.length,

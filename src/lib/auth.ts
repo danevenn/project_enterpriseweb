@@ -1,6 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
+import { logger } from "@/lib/logger";
 
 type FirebaseSignInResponse = {
   localId?: string;
@@ -27,7 +28,7 @@ export const authOptions: NextAuthOptions = {
 
         const apiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
         if (!apiKey) {
-          console.error("[auth] Falta NEXT_PUBLIC_FIREBASE_API_KEY");
+          logger.error("[auth] Falta NEXT_PUBLIC_FIREBASE_API_KEY");
           return null;
         }
 
@@ -53,7 +54,7 @@ export const authOptions: NextAuthOptions = {
             name: data.displayName ?? data.email ?? null,
           };
         } catch (error) {
-          console.error("[auth] Error validando contra Firebase", error);
+          logger.error("[auth] Error validando contra Firebase", error);
           return null;
         }
       },

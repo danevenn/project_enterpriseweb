@@ -1,55 +1,38 @@
 import { NextResponse } from "next/server";
-import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { updateMaterialCategorySchema } from "@/lib/validations";
-import { validationError } from "@/lib/api";
+import { apiError, validationError, withRouteErrors } from "@/lib/api";
 
 type Params = { params: Promise<{ id: string }> };
 
-export async function PATCH(request: Request, { params }: Params) {
+const CATEGORY_ERRORS = {
+  notFound: "Categoría no encontrada",
+  conflict: "Ya existe una categoría con ese nombre",
+};
+
+export const PATCH = withRouteErrors(async (request: Request, { params }: Params) => {
   const { id } = await params;
   const body = await request.json();
   const result = updateMaterialCategorySchema.safeParse(body);
 
   if (!result.success) return validationError(result.error);
 
-  try {
-    const category = await db.materialCategory.update({ where: { id }, data: result.data });
-    return NextResponse.json(category);
-  } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
-      if (error.code === "P2025") {
-        return NextResponse.json({ error: "Categoría no encontrada" }, { status: 404 });
-      }
-      if (error.code === "P2002") {
-        return NextResponse.json(
-          { error: "Ya existe una categoría con ese nombre" },
-          { status: 409 },
-        );
-      }
-    }
-    throw error;
-  }
-}
+  const category = await db.materialCategory.update({ where: { id }, data: result.data });
+  return NextResponse.json(category);
+}, CATEGORY_ERRORS);
 
-export async function DELETE(_req: Request, { params }: Params) {
+export const DELETE = withRouteErrors(async (_req: Request, { params }: Params) => {
   const { id } = await params;
 
+  // Guarda de integridad: no permitir borrar una categoría con materiales.
   const materialCount = await db.material.count({ where: { categoryId: id } });
   if (materialCount > 0) {
-    return NextResponse.json(
-      { error: `No se puede borrar: la categoría tiene ${materialCount} material(es) asociado(s)` },
-      { status: 409 },
+    return apiError(
+      `No se puede borrar: la categoría tiene ${materialCount} material(es) asociado(s)`,
+      409,
     );
   }
 
-  try {
-    await db.materialCategory.delete({ where: { id } });
-    return new NextResponse(null, { status: 204 });
-  } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2025") {
-      return NextResponse.json({ error: "Categoría no encontrada" }, { status: 404 });
-    }
-    throw error;
-  }
-}
+  await db.materialCategory.delete({ where: { id } });
+  return new NextResponse(null, { status: 204 });
+}, CATEGORY_ERRORS);

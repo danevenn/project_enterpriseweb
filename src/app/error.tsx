@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
+import { logger } from "@/lib/logger";
 
 export default function GlobalError({
   error,
@@ -12,7 +13,9 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("[app:error]", error);
+    logger.error("[app:error] Error no capturado en el árbol de React", error, {
+      digest: error.digest,
+    });
   }, [error]);
 
   return (

@@ -1,33 +1,25 @@
 import { NextResponse } from "next/server";
-import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { createMaterialCategorySchema } from "@/lib/validations";
-import { validationError } from "@/lib/api";
+import { validationError, withRouteErrors } from "@/lib/api";
 
-export async function GET() {
+export const GET = withRouteErrors(async () => {
   const categories = await db.materialCategory.findMany({
     orderBy: { name: "asc" },
     include: { _count: { select: { materials: true } } },
   });
   return NextResponse.json(categories);
-}
+});
 
-export async function POST(request: Request) {
-  const body = await request.json();
-  const result = createMaterialCategorySchema.safeParse(body);
+export const POST = withRouteErrors(
+  async (request: Request) => {
+    const body = await request.json();
+    const result = createMaterialCategorySchema.safeParse(body);
 
-  if (!result.success) return validationError(result.error);
+    if (!result.success) return validationError(result.error);
 
-  try {
     const category = await db.materialCategory.create({ data: result.data });
     return NextResponse.json(category, { status: 201 });
-  } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2002") {
-      return NextResponse.json(
-        { error: "Ya existe una categoría con ese nombre" },
-        { status: 409 },
-      );
-    }
-    throw error;
-  }
-}
+  },
+  { conflict: "Ya existe una categoría con ese nombre" },
+);

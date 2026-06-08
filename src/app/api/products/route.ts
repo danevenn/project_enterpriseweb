@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { createProductSchema, PRODUCT_SORT_FIELDS, SORT_ORDERS } from "@/lib/validations";
-import { validationError } from "@/lib/api";
+import { validationError, withRouteErrors } from "@/lib/api";
 
-export async function GET(request: Request) {
+export const GET = withRouteErrors(async (request: Request) => {
   const { searchParams } = new URL(request.url);
   const search = searchParams.get("search") ?? "";
   const categoryId = searchParams.get("categoryId");
@@ -28,25 +27,21 @@ export async function GET(request: Request) {
   });
 
   return NextResponse.json(products);
-}
+});
 
-export async function POST(request: Request) {
-  const body = await request.json();
-  const result = createProductSchema.safeParse(body);
+export const POST = withRouteErrors(
+  async (request: Request) => {
+    const body = await request.json();
+    const result = createProductSchema.safeParse(body);
 
-  if (!result.success) return validationError(result.error);
+    if (!result.success) return validationError(result.error);
 
-  const { image, ...rest } = result.data;
-  try {
+    const { image, ...rest } = result.data;
     const product = await db.product.create({
       data: { ...rest, image: image ? image : null },
       include: { category: { select: { id: true, name: true } } },
     });
     return NextResponse.json(product, { status: 201 });
-  } catch (error) {
-    if (error instanceof Prisma.PrismaClientKnownRequestError && error.code === "P2003") {
-      return NextResponse.json({ error: "La categoría indicada no existe" }, { status: 400 });
-    }
-    throw error;
-  }
-}
+  },
+  { invalidReference: "La categoría indicada no existe" },
+);

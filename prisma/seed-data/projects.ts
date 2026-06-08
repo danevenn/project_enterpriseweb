@@ -14,7 +14,7 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "Mesa de comedor de 240 cm tallada a mano en roble francés con acabado de aceite duro.",
     description:
-      "Pieza central diseñada para una vivienda en el Empordà. El tablero se compone de tres tablas seleccionadas de roble francés de origen sostenible (Bercé, Loira), aclimatadas durante seis meses en el taller hasta estabilizar su humedad por debajo del 10 %. La unión se resolvió con espigas pasantes de fresno teñido en oscuro, dejando vista la testa como detalle gráfico que cose la composición.\n\nLas patas trapezoidales en acero negro mate fueron forjadas por un herrero local de Banyoles a partir de pletina de 12 mm y soldadas en fragua, no en MIG, para conservar la textura artesanal en las uniones. El conjunto se ancla al tablero mediante seis tornillos pasantes ocultos bajo tapón de fresno torneado a mano.\n\nEl acabado se ejecutó en tres manos de aceite duro Osmo Polyx, lijando con grano 240 entre capas y aplicando la última mano a muñequilla para forzar la penetración en los poros. El resultado es una superficie que respira, repara puntualmente y envejece sin amarillear, manteniendo el tacto natural de la madera.\n\nLa pieza pesa 78 kg y fue entregada en una sola jornada mediante elevador hidráulico, ya que la vivienda no admite acceso por escalera.",
+      "Pieza central diseñada para una vivienda en Aranjuez. El tablero se compone de tres tablas seleccionadas de roble francés de origen sostenible (Bercé, Loira), aclimatadas durante seis meses en el taller hasta estabilizar su humedad por debajo del 10 %. La unión se resolvió con espigas pasantes de fresno teñido en oscuro, dejando vista la testa como detalle gráfico que cose la composición.\n\nLas patas trapezoidales en acero negro mate fueron forjadas por un herrero de Yuncos, en la misma comarca, a partir de pletina de 12 mm y soldadas en fragua, no en MIG, para conservar la textura artesanal en las uniones. El conjunto se ancla al tablero mediante seis tornillos pasantes ocultos bajo tapón de fresno torneado a mano.\n\nEl acabado se ejecutó en tres manos de aceite duro Osmo Polyx, lijando con grano 240 entre capas y aplicando la última mano a muñequilla para forzar la penetración en los poros. El resultado es una superficie que respira, repara puntualmente y envejece sin amarillear, manteniendo el tacto natural de la madera.\n\nLa pieza pesa 78 kg y fue entregada en una sola jornada mediante elevador hidráulico, ya que la vivienda no admite acceso por escalera.",
     image:
       "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -30,14 +30,14 @@ export const PROJECTS: Project[] = [
       "Aceite duro Osmo Polyx",
     ],
     year: 2025,
-    client: "Vivienda particular · Empordà",
+    client: "Vivienda particular · Aranjuez",
     durationWeeks: 8,
     dimensions: { width: 240, height: 75, depth: 95, unit: "cm" },
     process: [
       {
         phase: "Selección de tablas",
         description:
-          "Visita al almacén de maderas en Olot para escoger tres tablas con veta continua y nudos sanos.",
+          "Visita al almacén de maderas en Toledo para escoger tres tablas con veta continua y nudos sanos.",
         weeks: 1,
       },
       {
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     testimonial: {
       quote:
         "La mesa tiene presencia sin imponerse. Es lo primero que se nota al entrar y lo último que se mira al salir.",
-      author: "Marta Vilanova",
+      author: "Marta Solís",
       role: "Propietaria",
     },
     tags: ["FSC", "encargo singular", "comedor"],
@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "Estructura de altillo en madera laminada y peldaños en abeto antiguo recuperado.",
     description:
-      "Intervención integral sobre un antiguo taller textil del Poblenou de 110 m² con cuatro metros de altura libre. El proyecto requería ganar una zona de descanso sin perder la lectura industrial del espacio ni cargar visualmente las cerchas Polonceau originales del edificio, que se mantuvieron a la vista tras un decapado por chorro de arena.\n\nLa estructura del altillo se calculó para una sobrecarga de 200 kg/m² y se ejecutó en madera laminada encolada (GL24h) de pino silvestre, con vigas de 200×80 mm apoyadas sobre dos pilares de acero corten anclados al forjado existente mediante placa base y pernos químicos M16. El forjado superior se resolvió con tablero contralaminado CLT de tres capas, dejando vista la cara inferior como falso techo natural.\n\nLos peldaños de la escalera se construyeron a partir de tarima antigua recuperada de una masía catalana en ruinas, cepillada manualmente para conservar las marcas de azuela originales. Cada peldaño se fija mediante un perfil L oculto soldado a la zanca lateral en pletina de acero negro de 15 mm.\n\nEl resultado convive con la memoria del edificio sin pastiche: lo nuevo se reconoce nuevo, y lo viejo se cuida sin mimetizarse.",
+      "Intervención integral sobre una antigua nave de imprenta del barrio de Arganzuela (Madrid) de 110 m² con cuatro metros de altura libre. El proyecto requería ganar una zona de descanso sin perder la lectura industrial del espacio ni cargar visualmente las cerchas Polonceau originales del edificio, que se mantuvieron a la vista tras un decapado por chorro de arena.\n\nLa estructura del altillo se calculó para una sobrecarga de 200 kg/m² y se ejecutó en madera laminada encolada (GL24h) de pino silvestre, con vigas de 200×80 mm apoyadas sobre dos pilares de acero corten anclados al forjado existente mediante placa base y pernos químicos M16. El forjado superior se resolvió con tablero contralaminado CLT de tres capas, dejando vista la cara inferior como falso techo natural.\n\nLos peldaños de la escalera se construyeron a partir de tarima antigua recuperada de una casona manchega en ruinas, cepillada manualmente para conservar las marcas de azuela originales. Cada peldaño se fija mediante un perfil L oculto soldado a la zanca lateral en pletina de acero negro de 15 mm.\n\nEl resultado convive con la memoria del edificio sin pastiche: lo nuevo se reconoce nuevo, y lo viejo se cuida sin mimetizarse.",
     image:
       "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -106,7 +106,7 @@ export const PROJECTS: Project[] = [
       "Aceite cera natural",
     ],
     year: 2024,
-    client: "Loft Poblenou · Barcelona",
+    client: "Loft Arganzuela · Madrid",
     durationWeeks: 14,
     dimensions: { width: 6.2, height: 2.4, depth: 4.8, unit: "m" },
     process: [
@@ -177,7 +177,7 @@ export const PROJECTS: Project[] = [
       "Cera natural de abeja",
     ],
     year: 2025,
-    client: "Despacho profesional · Sant Gervasi",
+    client: "Despacho profesional · Madrid",
     durationWeeks: 5,
     dimensions: { width: 420, height: 240, depth: 32, unit: "cm" },
     process: [
@@ -218,20 +218,20 @@ export const PROJECTS: Project[] = [
     testimonial: {
       quote:
         "Tres años después, sigue recta como el primer día. La sutileza del detalle solo se ve cuando ya la has vivido.",
-      author: "Eduard Pons",
+      author: "Eduardo Lerma",
       role: "Editor",
     },
     tags: ["biblioteca", "interior", "encargo singular"],
     featured: true,
   },
   {
-    slug: "restauracion-armario-modernista",
-    title: "Restauración Armario Modernista",
+    slug: "restauracion-armario-nogal",
+    title: "Restauración de Armario de Nogal (1905)",
     category: "Restauración",
     shortDescription:
-      "Recuperación integral de un armario modernista de 1908 con marquetería original.",
+      "Recuperación integral de un armario ecléctico de nogal de 1905 con marquetería original.",
     description:
-      "Pieza familiar firmada por el taller barcelonés Busquets en 1908, heredada durante cuatro generaciones. Llegó al taller con tres piezas de marquetería desprendidas, un travesaño inferior comido por carcoma activa y la goma laca original prácticamente desaparecida tras un intento previo de barnizado con tinte.\n\nLa primera fase consistió en un tratamiento curativo de carcoma con permetrina inyectada y posterior cuarentena de seis semanas en cámara seca a 22 °C. Confirmada la erradicación, se procedió al decapado manual de los restos de barniz moderno con muñequilla de alcohol etílico al 96 %, evitando cualquier producto químico agresivo que pudiera dañar la marquetería original de palosanto y limoncillo.\n\nLas tres piezas de marquetería perdidas se reconstruyeron a partir de fotografías de archivo familiar y de un catálogo del taller Busquets conservado en el MNAC. El palosanto se obtuvo de un piano vertical Erard de 1890 desguazado, garantizando un envejecimiento cromático coherente con el resto del mueble.\n\nEl acabado se devolvió con goma laca aplicada a muñequilla en seis manos, frotando con aceite de linaza entre la cuarta y la quinta para conseguir la profundidad típica del barniz francés. Los herrajes de bronce se limpiaron con bicarbonato y se protegieron con cera microcristalina, conservando la pátina.",
+      "Pieza familiar firmada por un taller ebanista madrileño en 1905, heredada durante cuatro generaciones. Llegó al taller con tres piezas de marquetería desprendidas, un travesaño inferior comido por carcoma activa y la goma laca original prácticamente desaparecida tras un intento previo de barnizado con tinte.\n\nLa primera fase consistió en un tratamiento curativo de carcoma con permetrina inyectada y posterior cuarentena de seis semanas en cámara seca a 22 °C. Confirmada la erradicación, se procedió al decapado manual de los restos de barniz moderno con muñequilla de alcohol etílico al 96 %, evitando cualquier producto químico agresivo que pudiera dañar la marquetería original de palosanto y limoncillo.\n\nLas tres piezas de marquetería perdidas se reconstruyeron a partir de fotografías de archivo familiar y de un catálogo de la época conservado en el Museo Nacional de Artes Decorativas (Madrid). El palosanto se obtuvo de un piano vertical Erard de 1890 desguazado, garantizando un envejecimiento cromático coherente con el resto del mueble.\n\nEl acabado se devolvió con goma laca aplicada a muñequilla en seis manos, frotando con aceite de linaza entre la cuarta y la quinta para conseguir la profundidad típica del barniz francés. Los herrajes de bronce se limpiaron con bicarbonato y se protegieron con cera microcristalina, conservando la pátina.",
     image:
       "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -248,14 +248,14 @@ export const PROJECTS: Project[] = [
       "Cera microcristalina",
     ],
     year: 2024,
-    client: "Colección privada · Gràcia",
+    client: "Colección privada · Madrid",
     durationWeeks: 12,
     dimensions: { width: 168, height: 220, depth: 58, unit: "cm" },
     process: [
       {
         phase: "Diagnóstico",
         description:
-          "Inspección entomológica, fotografía técnica y archivo histórico del taller Busquets.",
+          "Inspección entomológica, fotografía técnica y archivo histórico del taller ebanista original.",
         weeks: 1,
       },
       {
@@ -296,11 +296,11 @@ export const PROJECTS: Project[] = [
     ],
     testimonial: {
       quote:
-        "Mi bisabuelo lo encargó en 1908. No quería verlo nuevo, quería verlo en pie cien años más. Eso es exactamente lo que devolvieron.",
-      author: "Clara Riera",
+        "Mi bisabuelo lo encargó en 1905. No quería verlo nuevo, quería verlo en pie cien años más. Eso es exactamente lo que devolvieron.",
+      author: "Clara Heras",
       role: "Cuarta generación familiar",
     },
-    tags: ["modernismo", "patrimonio", "restauración integral"],
+    tags: ["eclecticismo", "patrimonio", "restauración integral"],
     featured: true,
   },
   {
@@ -310,7 +310,7 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "Escritorio de 180 cm con frente curvado mediante laminado al vapor.",
     description:
-      "Diseñado para el estudio de arquitectura Casals & Partners, que necesitaba una mesa de reuniones de 180 cm que no fuera rectangular ni ovalada, sino con un frente cóncavo hacia el invitado para favorecer la conversación cercana al material y los planos.\n\nEl frente curvado se obtuvo laminando ocho chapas de fresno europeo de 1,5 mm sobre un molde positivo de MDF fresado en CNC con radio constante de 220 cm. Las chapas se encolaron con cola de urea-formaldehído (resistente al cizallamiento) y se prensaron al vacío durante 48 horas en una bolsa de polietileno con bomba de pistón. Tras el desmolde, la pieza mantuvo la curva sin retorno elástico apreciable.\n\nLa superficie superior se trabajó con poliuretano al agua mate de dos componentes (Borma Aqua) aplicado a pistola en tres manos, lijando con grano 320 entre capas. El acabado resiste el café, los rotuladores técnicos y la limpieza con paño húmedo sin alterar el tono blanquecino natural del fresno.\n\nLas patas se resolvieron en acero inoxidable cepillado de 60×20 mm soldado en bisel a 45° para que las aristas queden afiladas, no romas. El conjunto pesa 42 kg y se montó in situ con tres tornillos M8 ocultos por embellecedores torneados en el mismo fresno.",
+      "Diseñado para Estudio Marván Arquitectos, en Madrid, que necesitaba una mesa de reuniones de 180 cm que no fuera rectangular ni ovalada, sino con un frente cóncavo hacia el invitado para favorecer la conversación cercana al material y los planos.\n\nEl frente curvado se obtuvo laminando ocho chapas de fresno europeo de 1,5 mm sobre un molde positivo de MDF fresado en CNC con radio constante de 220 cm. Las chapas se encolaron con cola de urea-formaldehído (resistente al cizallamiento) y se prensaron al vacío durante 48 horas en una bolsa de polietileno con bomba de pistón. Tras el desmolde, la pieza mantuvo la curva sin retorno elástico apreciable.\n\nLa superficie superior se trabajó con poliuretano al agua mate de dos componentes (Borma Aqua) aplicado a pistola en tres manos, lijando con grano 320 entre capas. El acabado resiste el café, los rotuladores técnicos y la limpieza con paño húmedo sin alterar el tono blanquecino natural del fresno.\n\nLas patas se resolvieron en acero inoxidable cepillado de 60×20 mm soldado en bisel a 45° para que las aristas queden afiladas, no romas. El conjunto pesa 42 kg y se montó in situ con tres tornillos M8 ocultos por embellecedores torneados en el mismo fresno.",
     image:
       "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -325,7 +325,7 @@ export const PROJECTS: Project[] = [
       "Acero inoxidable cepillado",
     ],
     year: 2025,
-    client: "Estudio Casals & Partners",
+    client: "Estudio Marván Arquitectos · Madrid",
     durationWeeks: 7,
     dimensions: { width: 180, height: 74, depth: 95, unit: "cm" },
     process: [
@@ -372,7 +372,7 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "Estructura cubierta de 36 m² en madera de cedro rojo del oeste americano.",
     description:
-      "Porche de gran envergadura para una masía rehabilitada en el Berguedà, orientada a poniente con vistas al Pedraforca. El cliente quería un espacio cubierto que respirase la tradición constructiva catalana sin recurrir a pino tratado en autoclave, frecuente pero visualmente plano tras pocos años de uso.\n\nToda la estructura — seis pilares, dos jácenas perimetrales, ocho correas y entrevigado — se ejecutó en cedro rojo del oeste americano (Thuja plicata) por su excepcional resistencia natural a hongos e insectos sin necesidad de tratamientos químicos. El cedro envejece a un gris plateado uniforme que el cliente prefirió deliberadamente sobre cualquier acabado pigmentado.\n\nLos ensambles principales — pilar-jácena y jácena-correa — se resolvieron con caja y espiga reforzada con tarugo de roble pasante, manteniendo la imagen artesanal sin recurrir a herrajes visibles. Solo los anclajes inferiores a la zapata de hormigón llevan placa metálica galvanizada, separada del suelo 3 cm para evitar capilaridad.\n\nLa cubierta se resolvió con teja árabe envejecida recuperada, sobre rastrel de pino tratado y manta impermeable bituminosa autoprotegida. El conjunto se replanteó in situ con plantillas a tamaño real porque el terreno presentaba un desnivel de 18 cm en los 9 m de longitud del porche.",
+      "Porche de gran envergadura para una casa de labor rehabilitada en los Montes de Toledo, orientada a poniente con vistas a la Sierra de San Vicente. El cliente quería un espacio cubierto que respirase la tradición constructiva castellana sin recurrir a pino tratado en autoclave, frecuente pero visualmente plano tras pocos años de uso.\n\nToda la estructura — seis pilares, dos jácenas perimetrales, ocho correas y entrevigado — se ejecutó en cedro rojo del oeste americano (Thuja plicata) por su excepcional resistencia natural a hongos e insectos sin necesidad de tratamientos químicos. El cedro envejece a un gris plateado uniforme que el cliente prefirió deliberadamente sobre cualquier acabado pigmentado.\n\nLos ensambles principales — pilar-jácena y jácena-correa — se resolvieron con caja y espiga reforzada con tarugo de roble pasante, manteniendo la imagen artesanal sin recurrir a herrajes visibles. Solo los anclajes inferiores a la zapata de hormigón llevan placa metálica galvanizada, separada del suelo 3 cm para evitar capilaridad.\n\nLa cubierta se resolvió con teja árabe envejecida recuperada, sobre rastrel de pino tratado y manta impermeable bituminosa autoprotegida. El conjunto se replanteó in situ con plantillas a tamaño real porque el terreno presentaba un desnivel de 18 cm en los 9 m de longitud del porche.",
     image:
       "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -387,7 +387,7 @@ export const PROJECTS: Project[] = [
       "Placa galvanizada base",
     ],
     year: 2024,
-    client: "Masía rehabilitada · Berguedà",
+    client: "Casa de labor rehabilitada · Montes de Toledo",
     durationWeeks: 10,
     dimensions: { width: 9, height: 3.2, depth: 4, unit: "m" },
     process: [
@@ -434,7 +434,7 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "Vitrina climatizada para 220 botellas con marquetería geométrica en macasar y latón.",
     description:
-      "Encargo singular para un coleccionista de Borgoña residente en Pedralbes. El proyecto requería una vitrina climatizada para 220 botellas en horizontal con frente decorativo y temperatura estable a 13 °C, integrada en el comedor sin aspecto de electrodoméstico.\n\nEl mueble se diseñó como pieza Art Déco contemporánea, recuperando el lenguaje geométrico de los talleres parisinos de los años treinta. El frente se resuelve con marquetería radial de ébano macasar y limoncillo formando un abanico de 27 segmentos, separados por filetes de latón cepillado de 2 mm embebidos en ranura. Las puertas son de vidrio templado bajo en hierro con junta perimetral magnética para garantizar el sellado térmico.\n\nEl interior se forró en sapeli teñido en negro con baldas de roble americano sobre guías de latón macizo, dimensionadas para botellas borgoñonas (Ø 81 mm) con espacio adicional para magnums. El sistema de refrigeración es una unidad pasiva de compresor Eurocave dimensionada para 200 W con disipador en la trasera ventilada por rejilla oculta tras zócalo.\n\nLa pieza se calculó con holgura térmica para mantener 13 °C ± 0,5 °C incluso durante los picos de calor estival de la zona, con humedad relativa estable al 65 % gracias a un humidificador pasivo de bandeja de zinc.",
+      "Encargo singular para un coleccionista residente en un cigarral de Toledo. El proyecto requería una vitrina climatizada para 220 botellas en horizontal con frente decorativo y temperatura estable a 13 °C, integrada en el comedor sin aspecto de electrodoméstico.\n\nEl mueble se diseñó como pieza Art Déco contemporánea, recuperando el lenguaje geométrico de los talleres parisinos de los años treinta. El frente se resuelve con marquetería radial de ébano macasar y limoncillo formando un abanico de 27 segmentos, separados por filetes de latón cepillado de 2 mm embebidos en ranura. Las puertas son de vidrio templado bajo en hierro con junta perimetral magnética para garantizar el sellado térmico.\n\nEl interior se forró en sapeli teñido en negro con baldas de roble americano sobre guías de latón macizo, dimensionadas para botellas borgoñonas (Ø 81 mm) con espacio adicional para magnums. El sistema de refrigeración es una unidad pasiva de compresor Eurocave dimensionada para 200 W con disipador en la trasera ventilada por rejilla oculta tras zócalo.\n\nLa pieza se calculó con holgura térmica para mantener 13 °C ± 0,5 °C incluso durante los picos de calor estival de la zona, con humedad relativa estable al 65 % gracias a un humidificador pasivo de bandeja de zinc.",
     image:
       "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -451,7 +451,7 @@ export const PROJECTS: Project[] = [
       "Vidrio templado bajo en hierro",
     ],
     year: 2025,
-    client: "Coleccionista privado · Pedralbes",
+    client: "Coleccionista privado · Cigarral de Toledo",
     durationWeeks: 16,
     dimensions: { width: 180, height: 200, depth: 62, unit: "cm" },
     process: [
@@ -500,20 +500,20 @@ export const PROJECTS: Project[] = [
     testimonial: {
       quote:
         "Imposible saber que dentro hay un compresor. Mis amigos sumilleres pensaban que era un bargueño antiguo restaurado.",
-      author: "Jean-Philippe Marchand",
+      author: "Ignacio del Valle",
       role: "Coleccionista",
     },
     tags: ["art déco", "marquetería", "encargo singular", "climatización"],
     featured: true,
   },
   {
-    slug: "cocina-castano-masia",
-    title: "Cocina Rústica de Castaño en Masía",
+    slug: "cocina-castano-casona",
+    title: "Cocina Rústica de Castaño en Casona",
     category: "Muebles a medida",
     shortDescription:
       "Cocina completa en castaño macizo con encimera de granito flameado y herrajes de hierro forjado.",
     description:
-      "Cocina integral de 18 m² para una masía del siglo XVIII rehabilitada en el Lluçanès. El cliente, restaurador profesional retirado, pidió una cocina de uso real, no de catálogo: que aguantara cuchillos, ollas calientes apoyadas directamente y limpieza con bayeta sin protocolo. Nada de melaminas ni cantos termoplásticos.\n\nLos frentes se ejecutaron en castaño macizo de 22 mm con bastidor ensamblado a inglete reforzado con galleta de haya. El castaño se eligió específicamente por su tonalidad miel oscura y por su comportamiento estable en cocinas con vapor diario, además de su tradición constructiva en masías catalanas. Las puertas llevan tirador de hierro forjado por un herrero del Solsonès, con leve textura de martillo a la vista.\n\nLa encimera principal es de granito gris Quintana flameado de 4 cm sobre frente de madera. Sobre la zona de fogones se incorporó una repisa de roble macizo aceitado con teflón de protección térmica embebido, para apoyar ollas recién sacadas del fuego sin marcar la madera. Los rodapiés son de pizarra negra del Berguedà, fijada con mortero bastardo.\n\nEl conjunto se completa con un fregadero de gres esmaltado de gran formato (90 cm) bajo encimera y grifería de bronce cepillado con mando largo tipo bistró.",
+      "Cocina integral de 18 m² para una casona del siglo XVIII rehabilitada en La Sagra. El cliente, restaurador profesional retirado, pidió una cocina de uso real, no de catálogo: que aguantara cuchillos, ollas calientes apoyadas directamente y limpieza con bayeta sin protocolo. Nada de melaminas ni cantos termoplásticos.\n\nLos frentes se ejecutaron en castaño macizo de 22 mm con bastidor ensamblado a inglete reforzado con galleta de haya. El castaño se eligió específicamente por su tonalidad miel oscura y por su comportamiento estable en cocinas con vapor diario, además de su tradición constructiva en casonas castellanas. Las puertas llevan tirador de hierro forjado por un herrero de Yepes, con leve textura de martillo a la vista.\n\nLa encimera principal es de granito gris Quintana flameado de 4 cm sobre frente de madera. Sobre la zona de fogones se incorporó una repisa de roble macizo aceitado con teflón de protección térmica embebido, para apoyar ollas recién sacadas del fuego sin marcar la madera. Los rodapiés son de pizarra negra de Bernardos, fijada con mortero bastardo.\n\nEl conjunto se completa con un fregadero de gres esmaltado de gran formato (90 cm) bajo encimera y grifería de bronce cepillado con mando largo tipo bistró.",
     image:
       "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -527,10 +527,10 @@ export const PROJECTS: Project[] = [
       "Granito Quintana flameado",
       "Hierro forjado",
       "Roble aceitado",
-      "Pizarra del Berguedà",
+      "Pizarra de Bernardos",
     ],
     year: 2024,
-    client: "Masía privada · Lluçanès",
+    client: "Casona privada · La Sagra",
     durationWeeks: 11,
     dimensions: { width: 5.4, height: 2.6, depth: 0.65, unit: "m" },
     process: [
@@ -584,7 +584,7 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "Escalera helicoidal de tres metros de altura con peldaños volados en iroko macizo.",
     description:
-      "Pieza vertebradora de una vivienda unifamiliar en Sant Cugat, diseñada con el estudio Arquitectura Vives. La escalera conecta planta baja y primera en un hueco circular de 240 cm de diámetro, salvando 3,20 m de altura con catorce peldaños en hélice de 270°.\n\nLa estructura portante es un alma metálica central de tubo de acero de 220 mm de diámetro y 8 mm de espesor, anclada al forjado inferior con placa base atornillada químicamente. Los peldaños son macizos de iroko africano de 60 mm de espesor, escogido por su excepcional dureza Brinell (4,1 kN/mm²) y su estabilidad dimensional bajo cargas puntuales. Cada peldaño se acopla al alma mediante manguito metálico embebido con tres pernos M12 ocultos bajo tapón de iroko torneado.\n\nLa baranda exterior es un pasamanos continuo de iroko laminado al vapor sobre molde, formando una espiral perfecta sin uniones visibles en sus 7,2 m de desarrollo. Se fabricó en taller en 11 segmentos encolados y se montó en obra mediante andamio interior temporal. Los balaustres son varillas de acero negro mate de 14 mm cada 14 cm, embebidos por arriba en el pasamanos y por abajo en la testa del peldaño.\n\nEl iroko se acabó con dos manos de aceite Rubio Monocoat blanco neutro para preservar el tono cálido sin amarillearlo, y una mano final de cera con grano fino para incrementar la resistencia al pisado en zona de tránsito.",
+      "Pieza vertebradora de una vivienda unifamiliar en Pozuelo de Alarcón, diseñada con el Estudio Marván. La escalera conecta planta baja y primera en un hueco circular de 240 cm de diámetro, salvando 3,20 m de altura con catorce peldaños en hélice de 270°.\n\nLa estructura portante es un alma metálica central de tubo de acero de 220 mm de diámetro y 8 mm de espesor, anclada al forjado inferior con placa base atornillada químicamente. Los peldaños son macizos de iroko africano de 60 mm de espesor, escogido por su excepcional dureza Brinell (4,1 kN/mm²) y su estabilidad dimensional bajo cargas puntuales. Cada peldaño se acopla al alma mediante manguito metálico embebido con tres pernos M12 ocultos bajo tapón de iroko torneado.\n\nLa baranda exterior es un pasamanos continuo de iroko laminado al vapor sobre molde, formando una espiral perfecta sin uniones visibles en sus 7,2 m de desarrollo. Se fabricó en taller en 11 segmentos encolados y se montó en obra mediante andamio interior temporal. Los balaustres son varillas de acero negro mate de 14 mm cada 14 cm, embebidos por arriba en el pasamanos y por abajo en la testa del peldaño.\n\nEl iroko se acabó con dos manos de aceite Rubio Monocoat blanco neutro para preservar el tono cálido sin amarillearlo, y una mano final de cera con grano fino para incrementar la resistencia al pisado en zona de tránsito.",
     image:
       "https://images.unsplash.com/photo-1564540583246-934409427776?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -600,7 +600,7 @@ export const PROJECTS: Project[] = [
       "Cera de carnauba",
     ],
     year: 2025,
-    client: "Vivienda unifamiliar · Sant Cugat",
+    client: "Vivienda unifamiliar · Pozuelo de Alarcón",
     durationWeeks: 18,
     dimensions: { width: 240, height: 320, depth: 240, unit: "cm" },
     process: [
@@ -654,8 +654,8 @@ export const PROJECTS: Project[] = [
     testimonial: {
       quote:
         "Subir y bajar es una experiencia. La gente que viene de visita se para a media altura sin saber por qué.",
-      author: "Arq. Vives",
-      role: "Arquitecta del proyecto",
+      author: "Estudio Marván",
+      role: "Arquitectura del proyecto",
     },
     tags: ["estructural", "escalera", "encargo singular", "laminado"],
     featured: true,
@@ -667,7 +667,7 @@ export const PROJECTS: Project[] = [
     shortDescription:
       "Recuperación de portón renacentista de nogal del siglo XVI con tallas figurativas.",
     description:
-      "Portón principal de un palacete del siglo XVI en el casco antiguo de Vic, declarado bien cultural de interés local. La pieza original mide 280×155 cm, está construida en nogal macizo de 50 mm y conserva tallas figurativas atribuidas al taller de Pere Costa con escenas mitológicas en cuatro plafones rebajados.\n\nLlegó al taller con daños severos por exposición prolongada a la intemperie: agrietamiento del plafón inferior derecho, pérdida de tres tarugos pasantes, oxidación profunda de las cerraduras de hierro originales y desprendimiento de la talla central del plafón superior izquierdo. La intervención se planteó como restauración conservativa pura: mantener todo lo original viable y reponer lo perdido con criterio reconocible (regla de Brandi).\n\nLas grietas del plafón inferior se consolidaron con injerto de nogal antiguo recuperado de una viga de derribo, cosido con espiga de fresno teñido y rematado con goma laca pigmentada. La talla desprendida se reposicionó con resina acrílica reversible Paraloid B-72 al 30 %, dejando una junta visible para distinguir intervención de original.\n\nLos herrajes de hierro forjado se trataron con baño electrolítico controlado por restaurador metalúrgico colaborador, recuperando la cerradura de muelle del XVI funcional. El acabado se devolvió con cera microcristalina aplicada a paño de algodón, evitando barnices que falseasen la pátina centenaria.",
+      "Portón principal de un palacio del siglo XVI en el casco histórico de Toledo, declarado Bien de Interés Cultural. La pieza original mide 280×155 cm, está construida en nogal macizo de 50 mm y conserva tallas figurativas atribuidas a un taller toledano del círculo de Alonso de Covarrubias con escenas mitológicas en cuatro plafones rebajados.\n\nLlegó al taller con daños severos por exposición prolongada a la intemperie: agrietamiento del plafón inferior derecho, pérdida de tres tarugos pasantes, oxidación profunda de las cerraduras de hierro originales y desprendimiento de la talla central del plafón superior izquierdo. La intervención se planteó como restauración conservativa pura: mantener todo lo original viable y reponer lo perdido con criterio reconocible (regla de Brandi).\n\nLas grietas del plafón inferior se consolidaron con injerto de nogal antiguo recuperado de una viga de derribo, cosido con espiga de fresno teñido y rematado con goma laca pigmentada. La talla desprendida se reposicionó con resina acrílica reversible Paraloid B-72 al 30 %, dejando una junta visible para distinguir intervención de original.\n\nLos herrajes de hierro forjado se trataron con baño electrolítico controlado por restaurador metalúrgico colaborador, recuperando la cerradura de muelle del XVI funcional. El acabado se devolvió con cera microcristalina aplicada a paño de algodón, evitando barnices que falseasen la pátina centenaria.",
     image:
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80",
     blurDataURL: BLUR,
@@ -684,14 +684,14 @@ export const PROJECTS: Project[] = [
       "Goma laca pigmentada",
     ],
     year: 2024,
-    client: "Palacete protegido · Vic",
+    client: "Palacio protegido · Toledo",
     durationWeeks: 20,
     dimensions: { width: 155, height: 280, depth: 5, unit: "cm" },
     process: [
       {
         phase: "Diagnóstico patrimonial",
         description:
-          "Informe técnico para el departamento de Patrimonio y autorización de la intervención.",
+          "Informe técnico para Patrimonio de Castilla-La Mancha y autorización de la intervención.",
         weeks: 3,
       },
       {
@@ -736,6 +736,6 @@ export const PROJECTS: Project[] = [
       "Tratamiento electrolítico de hierro forjado",
       "Acabado a cera microcristalina",
     ],
-    tags: ["patrimonio", "BCIL", "restauración conservativa", "siglo XVI"],
+    tags: ["patrimonio", "BIC", "restauración conservativa", "siglo XVI"],
   },
 ];

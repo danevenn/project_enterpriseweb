@@ -14,11 +14,11 @@ export type Stat = {
 const STATS: Stat[] = [
   {
     id: "anos-oficio",
-    value: 28,
+    value: 40,
     suffix: "+",
     label: "Años de oficio",
     description:
-      "Tres generaciones acumuladas en el taller, desde el abuelo ebanista hasta el equipo actual.",
+      "Dos generaciones al frente del taller de Illescas, desde su fundación en 1986 hasta el equipo actual.",
     icon: "CalendarClock",
   },
   {
@@ -27,7 +27,7 @@ const STATS: Stat[] = [
     suffix: "+",
     label: "Proyectos entregados",
     description:
-      "Muebles a medida, restauraciones y obras estructurales completadas en Cataluña.",
+      "Muebles a medida, restauraciones y obras estructurales completadas entre Toledo y Madrid.",
     icon: "PackageCheck",
   },
   {

@@ -12,8 +12,8 @@ import { useRef } from "react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { wordVariants } from "@/lib/motion";
 
-const TITLE_PARTS_1 = ["La", "madera"];
-const TITLE_PARTS_2 = ["contada", "con", "las", "manos"];
+const TITLE_PARTS_1 = ["La", "madera", "tiene"];
+const TITLE_PARTS_2 = ["acento", "castellano"];
 
 export function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ export function Hero() {
     <section
       ref={ref}
       className="relative isolate overflow-hidden"
-      aria-label="Presentación de Carpintería Los Artesanos"
+      aria-label="Presentación de Taller Sagra"
     >
       <motion.div
         style={{ y, scale: imgScale }}
@@ -61,7 +61,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="text-sm uppercase tracking-[0.3em] text-accent"
         >
-          Taller artesanal desde 1962
+          Ebanistería de autor · La Sagra, Toledo
         </motion.p>
 
         <motion.h1
@@ -99,8 +99,9 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}
           className="mt-6 max-w-xl text-lg text-foreground/80"
         >
-          Diseñamos y construimos muebles únicos, restauramos piezas con
-          historia y levantamos estructuras de madera que duran generaciones.
+          Diseñamos y construimos mobiliario único, restauramos piezas con
+          historia y levantamos estructuras de madera en el corazón de La Sagra,
+          a las puertas de Toledo y Madrid.
         </motion.p>
 
         <motion.div

@@ -11,12 +11,12 @@ export function Footer() {
               <Hammer className="h-5 w-5" />
             </span>
             <span className="font-heading text-lg font-semibold">
-              Carpintería Los Artesanos
+              Taller Sagra
             </span>
           </Link>
           <p className="mt-3 text-sm text-muted-foreground max-w-xs">
-            Tres generaciones trabajando la madera con paciencia, técnica y
-            atención al detalle.
+            Ebanistería de autor en La Sagra: madera trabajada con paciencia,
+            técnica y atención al detalle, entre Toledo y Madrid.
           </p>
         </div>
 
@@ -59,23 +59,23 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 text-accent" />
-              <span>C/ del Ebanista 12 · 08001 Barcelona</span>
+              <span>Pol. Ind. La Estación, nave 14 · 45200 Illescas (Toledo)</span>
             </li>
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-accent" />
-              <span>+34 933 000 000</span>
+              <span>+34 925 51 20 00</span>
             </li>
             <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-accent" />
-              <span>hola@losartesanos.es</span>
+              <span>hola@tallersagra.es</span>
             </li>
           </ul>
         </div>
       </div>
       <div className="border-t border-border/60">
         <p className="container mx-auto px-4 py-4 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Carpintería Los Artesanos · Hecho con
-          madera y código.
+          © {new Date().getFullYear()} Taller Sagra · Ebanistería de autor en La
+          Sagra desde 1986.
         </p>
       </div>
     </footer>

@@ -7,7 +7,7 @@ import { Stagger, StaggerItem } from "@/components/motion/stagger";
 export const metadata: Metadata = {
   title: "Sobre Nosotros",
   description:
-    "La historia de Carpintería Los Artesanos, un taller familiar fundado en 1962, y el proceso artesanal con el que trabajamos cada pieza.",
+    "La historia de Taller Sagra, un taller de ebanistería familiar fundado en Illescas en 1986, y el proceso artesanal con el que trabajamos cada pieza.",
 };
 
 const PROCESS_STEPS = [
@@ -62,7 +62,7 @@ export default function AboutPage() {
     <article className="container mx-auto max-w-4xl px-4 py-16 md:py-24">
       <Reveal as="header" className="text-center">
         <p className="text-sm uppercase tracking-[0.3em] text-accent">
-          Tres generaciones de oficio
+          Dos generaciones de oficio
         </p>
         <h1 className="mt-3 font-heading text-4xl font-bold md:text-5xl">
           La historia del taller
@@ -81,21 +81,21 @@ export default function AboutPage() {
 
       <Reveal as="section" className="prose prose-stone mt-12 max-w-none text-foreground/85 leading-relaxed">
         <p className="text-lg">
-          Carpintería Los Artesanos nació en 1962 en un patio interior del barrio
-          de Gràcia. Antoni Vallès, abuelo de los actuales propietarios, montó allí
-          su primer banco de trabajo después de aprender el oficio durante diez
-          años en un taller de ebanistería del Eixample. Empezó haciendo encargos
+          Taller Sagra nació en 1986 en una nave a las afueras de Illescas, en el
+          corazón de La Sagra. Aurelio Crespo, padre del actual responsable, montó
+          allí su primer banco de trabajo después de aprender el oficio durante
+          diez años en una ebanistería de Toledo. Empezó haciendo encargos
           pequeños para los vecinos —una mesa, una repisa, el cabezal de una
           cama— y nunca dejó de hacerlos.
         </p>
         <p className="mt-6">
-          Sesenta años después seguimos en el mismo barrio. El taller se ha
-          ampliado dos veces, las máquinas son nuevas y los procesos de
-          presupuesto se gestionan por correo, pero el corazón del trabajo sigue
-          siendo el mismo: una persona, una pieza de madera y el tiempo
-          suficiente para hacerlo bien. Hoy somos cinco personas en plantilla
-          —tres ebanistas, una restauradora y una arquitecta técnica— y
-          colaboramos con herreros, tapiceros y cristaleros del barrio para los
+          Casi cuarenta años después seguimos en la misma comarca, a un paso de
+          Toledo y de Madrid. El taller se ha ampliado dos veces, las máquinas son
+          nuevas y los presupuestos se gestionan por correo, pero el corazón del
+          trabajo sigue siendo el mismo: una persona, una pieza de madera y el
+          tiempo suficiente para hacerlo bien. Hoy somos cinco personas en
+          plantilla —tres ebanistas, una restauradora y una arquitecta técnica— y
+          colaboramos con herreros, tapiceros y cristaleros de la zona para los
           encargos que lo requieren.
         </p>
         <p className="mt-6">

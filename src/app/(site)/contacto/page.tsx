@@ -6,7 +6,7 @@ import { Reveal } from "@/components/motion/reveal";
 export const metadata: Metadata = {
   title: "Contacto",
   description:
-    "Solicita un presupuesto o visita el taller de Carpintería Los Artesanos en Barcelona. Estudiamos cada encargo con detenimiento.",
+    "Solicita un presupuesto o visita el taller de Taller Sagra en Illescas (Toledo). Estudiamos cada encargo con detenimiento.",
 };
 
 export default function ContactPage() {
@@ -39,24 +39,24 @@ export default function ContactPage() {
             <ul className="mt-3 space-y-3 text-sm text-foreground/85">
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 text-accent" />
-                <span>C/ del Ebanista 12 · 08001 Barcelona</span>
+                <span>Pol. Ind. La Estación, nave 14 · 45200 Illescas (Toledo)</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-accent" />
                 <a
-                  href="tel:+34933000000"
+                  href="tel:+34925512000"
                   className="transition-colors hover:text-accent"
                 >
-                  +34 933 000 000
+                  +34 925 51 20 00
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-accent" />
                 <a
-                  href="mailto:hola@losartesanos.es"
+                  href="mailto:hola@tallersagra.es"
                   className="transition-colors hover:text-accent"
                 >
-                  hola@losartesanos.es
+                  hola@tallersagra.es
                 </a>
               </li>
             </ul>

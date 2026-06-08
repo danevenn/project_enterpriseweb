@@ -55,7 +55,7 @@ function NavContent({
           className="font-heading text-lg font-semibold"
           onClick={onNavigate}
         >
-          Los Artesanos
+          Taller Sagra
         </Link>
         <p className="text-xs text-muted-foreground">Panel de gestión</p>
       </div>
@@ -132,7 +132,7 @@ export function PanelMobileBar({ userLabel }: { userLabel: string }) {
           </div>
         </SheetContent>
       </Sheet>
-      <span className="font-heading text-base font-semibold">Los Artesanos</span>
+      <span className="font-heading text-base font-semibold">Taller Sagra</span>
     </header>
   );
 }

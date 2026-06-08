@@ -8,7 +8,7 @@ import { Reveal } from "@/components/motion/reveal";
 export const metadata: Metadata = {
   title: "Galería de Proyectos",
   description:
-    "Selección de muebles a medida, restauraciones y carpintería estructural realizados por Carpintería Los Artesanos.",
+    "Selección de muebles a medida, restauraciones y carpintería estructural realizados por Taller Sagra en La Sagra, entre Toledo y Madrid.",
 };
 
 export const revalidate = 3600;

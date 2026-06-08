@@ -54,13 +54,14 @@ export function Header() {
           >
             <Hammer className="h-5 w-5" />
           </motion.span>
-          <motion.span
-            animate={{ fontSize: scrolled ? "1rem" : "1.125rem" }}
-            transition={{ duration: 0.3 }}
-            className="font-heading font-semibold tracking-tight"
+          <span
+            className={cn(
+              "font-heading font-semibold tracking-tight transition-[font-size] duration-300",
+              scrolled ? "text-base" : "text-lg",
+            )}
           >
-            Los Artesanos
-          </motion.span>
+            Taller Sagra
+          </span>
         </Link>
 
         <nav aria-label="Navegación principal" className="hidden md:block">

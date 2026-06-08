@@ -32,6 +32,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { formatPrice } from "@/lib/format";
+import { isLowStock, formatMaterialStock } from "@/lib/material-utils";
 import {
   useMaterialsQuery,
   useDeleteMaterialMutation,
@@ -46,11 +47,6 @@ const SORT_LABELS: Record<MaterialFilters["sortBy"], string> = {
   name: "Nombre",
   stock: "Stock",
 };
-
-function isLowStock(m: MaterialWithCategory): boolean {
-  if (m.minStock == null) return false;
-  return Number(m.stock) <= Number(m.minStock);
-}
 
 function DeleteButton({ material }: { material: MaterialWithCategory }) {
   const [open, setOpen] = useState(false);
@@ -241,7 +237,7 @@ export function MaterialsView() {
                           aria-label="Stock bajo"
                         />
                       )}
-                      {Number(m.stock)} {m.unit.toLowerCase()}
+                      {formatMaterialStock(m)}
                     </span>
                   </TableCell>
                   <TableCell className="text-right tabular-nums">

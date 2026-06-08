@@ -16,20 +16,26 @@ export default defineConfig({
     exclude: ["src/test/integration/**", "e2e/**", "node_modules/**"],
     coverage: {
       provider: "v8",
-      reporter: ["text", "html"],
+      // text → resumen en consola; html → informe navegable local;
+      // lcov → fichero que Codecov ingiere en CI (coverage/lcov.info).
+      reporter: ["text", "html", "lcov"],
       // Limitamos la cobertura a los módulos que esta suite ejercita de verdad,
       // para que los umbrales sean significativos (no diluidos por la app entera).
       include: [
         "src/lib/product-utils.ts",
+        "src/lib/material-utils.ts",
         "src/lib/format.ts",
+        "src/lib/api.ts",
         "src/stores/ui-store.ts",
         "src/components/product-list.tsx",
         "src/components/category-filter.tsx",
       ],
       exclude: ["src/test/**", "src/**/*.stories.{ts,tsx}"],
       thresholds: {
-        // Las utilidades de producto deben ir al 100% (requisito del entregable).
+        // Las utilidades puras de inventario deben ir al 100% (requisito del
+        // entregable): son lógica de negocio aislada y exhaustivamente testeable.
         "src/lib/product-utils.ts": { lines: 100, functions: 100, statements: 100 },
+        "src/lib/material-utils.ts": { lines: 100, functions: 100, statements: 100 },
         "src/lib/format.ts": { lines: 100, functions: 100, statements: 100 },
         // Resto de módulos cubiertos: umbral general.
         lines: 80,

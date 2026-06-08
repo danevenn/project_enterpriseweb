@@ -2,10 +2,10 @@
 
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ProductCategoryForm } from "@/components/product-category-form";
-import { ProductCategoryList } from "@/components/product-category-list";
-import { MaterialCategoryForm } from "@/components/material-category-form";
-import { MaterialCategoryList } from "@/components/material-category-list";
+import { ProductCategoryForm } from "@/components/inventory/product-category-form";
+import { ProductCategoryList } from "@/components/inventory/product-category-list";
+import { MaterialCategoryForm } from "@/components/inventory/material-category-form";
+import { MaterialCategoryList } from "@/components/inventory/material-category-list";
 
 export default function PanelCategoriasPage() {
   return (

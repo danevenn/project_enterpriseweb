@@ -2,10 +2,12 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { updateMaterialCategorySchema } from "@/lib/validations";
 import { apiError, validationError, withRouteErrors } from "@/lib/api";
+import { requireWriteAccess } from "@/lib/api-auth";
 
 type Params = { params: Promise<{ id: string }> };
 
 const CATEGORY_ERRORS = {
+  guard: requireWriteAccess,
   notFound: "Categoría no encontrada",
   conflict: "Ya existe una categoría con ese nombre",
 };

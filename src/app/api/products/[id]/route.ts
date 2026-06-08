@@ -2,10 +2,12 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { updateProductSchema } from "@/lib/validations";
 import { validationError, withRouteErrors } from "@/lib/api";
+import { requireWriteAccess } from "@/lib/api-auth";
 
 type Params = { params: Promise<{ id: string }> };
 
 const PRODUCT_ERRORS = {
+  guard: requireWriteAccess,
   notFound: "Producto no encontrado",
   invalidReference: "La categoría indicada no existe",
 };

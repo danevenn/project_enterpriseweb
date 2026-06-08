@@ -51,22 +51,25 @@ export function validationError(error: z.ZodError) {
   });
 }
 
-// Mensajes a medida por recurso para los errores conocidos de Prisma. Permiten
-// que cada Route Handler conserve un texto útil para el usuario (el que se
-// muestra en los toasts del panel) sin reintroducir try/catch en el handler.
-export interface RouteErrorMessages {
+// Opciones por ruta. Los mensajes a medida permiten que cada Route Handler
+// conserve un texto útil para el usuario (el que se muestra en los toasts del
+// panel) sin reintroducir try/catch. `guard` es una comprobación previa
+// (p. ej. exigir sesión): si devuelve una respuesta, se cortocircuita.
+export interface RouteOptions {
   /** P2025 — registro no encontrado (404). */
   notFound?: string;
   /** P2002 — violación de restricción única (409). */
   conflict?: string;
   /** P2003 — clave foránea inválida (400). */
   invalidReference?: string;
+  /** Comprobación previa al handler; si devuelve Response, se devuelve esa. */
+  guard?: () => Promise<Response | null>;
 }
 
 // Mapea los errores conocidos de Prisma a un `ApiError`. Si el error no es uno
 // de los esperados, devuelve null para que el wrapper lo trate como error
 // inesperado (500) y lo registre.
-function mapPrismaError(error: unknown, messages: RouteErrorMessages): NextResponse | null {
+function mapPrismaError(error: unknown, messages: RouteOptions): NextResponse | null {
   if (!(error instanceof Prisma.PrismaClientKnownRequestError)) return null;
   switch (error.code) {
     case "P2025": // registro a actualizar/borrar no encontrado
@@ -92,16 +95,20 @@ type RouteHandler<A extends unknown[]> = (
 // toda la API responde siempre con el formato `ApiError`.
 export function withRouteErrors<A extends unknown[]>(
   handler: RouteHandler<A>,
-  messages: RouteErrorMessages = {},
+  options: RouteOptions = {},
 ) {
   return async (request: Request, ...args: A): Promise<Response> => {
     try {
+      if (options.guard) {
+        const denied = await options.guard();
+        if (denied) return denied;
+      }
       return await handler(request, ...args);
     } catch (error) {
       if (error instanceof SyntaxError) {
         return apiError("El cuerpo de la petición no es JSON válido", 400);
       }
-      const mapped = mapPrismaError(error, messages);
+      const mapped = mapPrismaError(error, options);
       if (mapped) return mapped;
 
       logger.error("[api] Error no controlado en una Route Handler", error, {

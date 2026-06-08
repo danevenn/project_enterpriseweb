@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { createMaterialSchema, MATERIAL_SORT_FIELDS, SORT_ORDERS } from "@/lib/validations";
 import { validationError, withRouteErrors } from "@/lib/api";
+import { requireWriteAccess } from "@/lib/api-auth";
 
 export const GET = withRouteErrors(async (request: Request) => {
   const { searchParams } = new URL(request.url);
@@ -42,5 +43,5 @@ export const POST = withRouteErrors(
     });
     return NextResponse.json(material, { status: 201 });
   },
-  { invalidReference: "La categoría indicada no existe" },
+  { guard: requireWriteAccess, invalidReference: "La categoría indicada no existe" },
 );

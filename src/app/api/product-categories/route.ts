@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { createProductCategorySchema } from "@/lib/validations";
 import { validationError, withRouteErrors } from "@/lib/api";
+import { requireWriteAccess } from "@/lib/api-auth";
 
 export const GET = withRouteErrors(async () => {
   const categories = await db.productCategory.findMany({
@@ -21,5 +22,5 @@ export const POST = withRouteErrors(
     const category = await db.productCategory.create({ data: result.data });
     return NextResponse.json(category, { status: 201 });
   },
-  { conflict: "Ya existe una categoría con ese nombre" },
+  { guard: requireWriteAccess, conflict: "Ya existe una categoría con ese nombre" },
 );

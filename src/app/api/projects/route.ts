@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { createProjectSchema } from "@/lib/validations";
 import { validationError, withRouteErrors } from "@/lib/api";
+import { requireWriteAccess } from "@/lib/api-auth";
 
 const BLUR_FALLBACK =
   "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAGAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAj/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABT/2Q==";
@@ -37,5 +38,5 @@ export const POST = withRouteErrors(
     });
     return NextResponse.json(project, { status: 201 });
   },
-  { conflict: "Ya existe un proyecto con ese slug" },
+  { guard: requireWriteAccess, conflict: "Ya existe un proyecto con ese slug" },
 );

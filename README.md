@@ -89,8 +89,10 @@ pnpm test:integration  # Route Handlers contra Postgres
 pnpm test:e2e          # flujos completos en navegador (requiere Firebase + BD sembrada)
 ```
 
-El CI (GitHub Actions) ejecuta typecheck, lint y los tests unitarios/integración en cada push y PR
-(la integración usa un Postgres efímero como service container).
+El CI (GitHub Actions) ejecuta en cada push y PR: **typecheck**, **lint**, **tests
+unitarios/componente** (con cobertura), **integración** y **E2E** (Playwright). La integración y el
+E2E usan un **Postgres efímero** como *service container* (sembrado para el E2E); el E2E hace **login
+real** contra Firebase con un usuario de test y se omite en PRs de *forks* (sin acceso a los secrets).
 
 ## Desarrollo local
 

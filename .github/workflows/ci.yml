@@ -86,3 +86,70 @@ jobs:
 
       - name: Tests de integración
         run: pnpm test:integration
+
+  # E2E: Playwright contra la app real (Next dev) y un Postgres EFÍMERO sembrado.
+  # Hace login REAL contra Firebase con el usuario de test, navega el panel y crea
+  # /borra productos (autolimpieza en afterEach). Se OMITE en PRs de forks, que no
+  # tienen acceso a los secrets (Firebase / NextAuth / usuario E2E).
+  e2e:
+    name: E2E (Playwright)
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: ci_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/ci_test?schema=public
+      DIRECT_URL: postgresql://postgres:postgres@localhost:5432/ci_test?schema=public
+      NEXTAUTH_URL: http://localhost:3000
+      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+      NEXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
+      NEXT_PUBLIC_FIREBASE_APP_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_APP_ID }}
+      NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
+      NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_FIREBASE_PROJECT_ID }}
+      NEXT_PUBLIC_DEMO_EMAIL: demo@carpinterialosartesanos.com
+      E2E_USER_EMAIL: ${{ secrets.E2E_USER_EMAIL }}
+      E2E_USER_PASSWORD: ${{ secrets.E2E_USER_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Crear el esquema en el Postgres efímero
+        run: pnpm exec prisma db push --skip-generate
+
+      - name: Sembrar datos de demo (categorías y productos)
+        run: pnpm db:seed
+
+      - name: Instalar el navegador de Playwright
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Tests E2E (login real + inventario)
+        run: pnpm test:e2e
+
+      - name: Subir el informe de Playwright
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

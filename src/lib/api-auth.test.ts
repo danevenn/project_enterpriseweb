@@ -7,7 +7,7 @@ vi.mock("next-auth", () => ({
 }));
 
 // El correo demo se lee a nivel de módulo, así que se fija ANTES de importar.
-const DEMO = "demo@carpinterialosartesanos.com";
+const DEMO = "demo@tallersagra.com";
 vi.stubEnv("NEXT_PUBLIC_DEMO_EMAIL", DEMO);
 
 const { requireWriteAccess } = await import("@/lib/api-auth");

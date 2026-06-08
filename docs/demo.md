@@ -13,7 +13,7 @@ sesión con la cuenta de demo en un clic. Si prefieres escribir las credenciales
 
 | Campo | Valor |
 | --- | --- |
-| Email | `demo@carpinterialosartesanos.com` |
+| Email | `demo@tallersagra.com` |
 | Contraseña | `Artesanos.Demo.2026` |
 
 ## Qué se puede ver

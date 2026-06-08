@@ -4,7 +4,7 @@ import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { Loader2 } from "lucide-react";
+import { Eye, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -29,28 +29,44 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [oauthLoading, setOauthLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false);
+
+  // Credenciales de la cuenta de demostración (solo lectura). Son públicas a
+  // propósito: permiten al cliente probar la capa de usuario en un clic.
+  const demoEmail = process.env.NEXT_PUBLIC_DEMO_EMAIL;
+  const demoPassword = process.env.NEXT_PUBLIC_DEMO_PASSWORD;
+
+  async function signInWithCredentials(credEmail: string, credPassword: string) {
+    const res = await signIn("credentials", {
+      email: credEmail,
+      password: credPassword,
+      redirect: false,
+    });
+
+    if (res?.error) {
+      toast.error("Credenciales incorrectas o usuario inexistente.");
+      return false;
+    }
+    toast.success("Sesión iniciada correctamente.");
+    router.push(callbackUrl);
+    router.refresh();
+    return true;
+  }
 
   async function handleCredentialsSubmit(
     event: React.FormEvent<HTMLFormElement>,
   ) {
     event.preventDefault();
     setLoading(true);
-
-    const res = await signIn("credentials", {
-      email,
-      password,
-      redirect: false,
-    });
-
+    await signInWithCredentials(email, password);
     setLoading(false);
+  }
 
-    if (res?.error) {
-      toast.error("Credenciales incorrectas o usuario inexistente.");
-      return;
-    }
-    toast.success("Sesión iniciada correctamente.");
-    router.push(callbackUrl);
-    router.refresh();
+  async function handleDemoSignIn() {
+    if (!demoEmail || !demoPassword) return;
+    setDemoLoading(true);
+    await signInWithCredentials(demoEmail, demoPassword);
+    setDemoLoading(false);
   }
 
   function handleGithubSignIn() {
@@ -125,6 +141,29 @@ function LoginForm() {
             Entrar
           </Button>
         </form>
+
+        {demoEmail && demoPassword && (
+          <div className="space-y-2 rounded-lg border border-dashed bg-muted/40 p-3 text-center">
+            <p className="text-xs text-muted-foreground">
+              ¿Solo quieres echar un vistazo? Entra en el panel en modo
+              demostración (solo lectura).
+            </p>
+            <Button
+              type="button"
+              variant="secondary"
+              className="w-full"
+              onClick={handleDemoSignIn}
+              disabled={demoLoading}
+            >
+              {demoLoading ? (
+                <Loader2 className="size-4 animate-spin" />
+              ) : (
+                <Eye className="size-4" />
+              )}
+              Entrar como demostración
+            </Button>
+          </div>
+        )}
       </CardContent>
 
       <CardFooter className="justify-center text-sm text-muted-foreground">

@@ -99,6 +99,27 @@ Se documenta como deuda **aceptada**: si estos formularios crecieran en *lógica
 (no en campos), el siguiente paso sería extraer los campos compuestos a
 subcomponentes.
 
+### 6. API de escritura sin autenticación (capa de usuario)
+
+**Problema.** `proxy.ts` exigía sesión solo para la **UI** de `/panel/*`, pero las
+Route Handlers `/api/*` quedaban abiertas: las mutaciones (`POST`/`PATCH`/`DELETE`)
+se podían ejecutar **sin iniciar sesión** llamando a la API directamente. La zona
+privada estaba protegida en la fachada, pero no en la puerta de atrás.
+
+**Solución.** Guard `requireWriteAccess()`
+([`src/lib/api-auth.ts`](../../src/lib/api-auth.ts)), integrado como opción `guard`
+de `withRouteErrors`, aplicado a **todas** las mutaciones (los `GET` siguen siendo
+públicos):
+
+- **401** si no hay sesión,
+- **403** si la sesión es la cuenta de demostración (panel de solo lectura),
+- permitido para cualquier otro usuario autenticado.
+
+Esto cierra la vulnerabilidad y, de paso, habilita una **demo pública segura**: la
+cuenta de demostración deja navegar todo el panel sin poder alterar los datos (ver
+[`docs/demo.md`](../demo.md)). Verificado en navegador: anónimo→401, demo→403,
+lectura pública→200.
+
 ## Reflexión
 
 **¿Cuál fue el error más frecuente?** Aceptar los **valores por defecto** de las

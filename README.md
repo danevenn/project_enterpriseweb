@@ -145,6 +145,7 @@ pnpm dev                           # http://localhost:3000
 
 | Documento | Contenido |
 | --- | --- |
+| [`docs/demo.md`](docs/demo.md) | Demo de la capa de usuario (acceso, cuenta demo de solo lectura) |
 | [`docs/arquitectura/`](docs/arquitectura/) | Diagrama del sistema (fuente Mermaid + PNG) |
 | [`docs/adr/`](docs/adr/) | Architecture Decision Records (4 decisiones clave) |
 | [`docs/testing/`](docs/testing/) | Estrategia de tests, integración y E2E |

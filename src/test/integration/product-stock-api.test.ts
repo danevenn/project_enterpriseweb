@@ -1,7 +1,11 @@
-import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, beforeEach, afterAll } from "vitest";
 import { testApiHandler } from "next-test-api-route-handler";
 import * as stockHandler from "@/app/api/products/[id]/stock/route";
 import { db } from "@/lib/db";
+
+// El guard de escritura se mockea para permitir las mutaciones (la auth se cubre
+// en src/lib/api-auth.test.ts).
+vi.mock("@/lib/api-auth", () => ({ requireWriteAccess: vi.fn(async () => null) }));
 
 // Integración del endpoint PATCH /api/products/[id]/stock. Verifica los tres
 // caminos: stock válido (200), id inexistente (404) y stock negativo (400).

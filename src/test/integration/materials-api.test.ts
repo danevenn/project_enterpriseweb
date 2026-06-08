@@ -1,7 +1,11 @@
-import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, beforeEach, afterAll } from "vitest";
 import { testApiHandler } from "next-test-api-route-handler";
 import * as materialsHandler from "@/app/api/materials/route";
 import { db } from "@/lib/db";
+
+// El guard de escritura se mockea para permitir las mutaciones (la auth se cubre
+// en src/lib/api-auth.test.ts).
+vi.mock("@/lib/api-auth", () => ({ requireWriteAccess: vi.fn(async () => null) }));
 
 // Tests de integración REALES de la familia Material (espejo de products-api):
 // ejercitan la Route Handler completa (zod + Prisma) contra el schema `test`.

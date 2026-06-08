@@ -26,6 +26,7 @@ export default defineConfig({
         "src/lib/material-utils.ts",
         "src/lib/format.ts",
         "src/lib/api.ts",
+        "src/lib/api-auth.ts",
         "src/stores/ui-store.ts",
         "src/components/product-list.tsx",
         "src/components/category-filter.tsx",

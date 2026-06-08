@@ -1,7 +1,12 @@
-import { describe, it, expect, beforeAll, beforeEach, afterAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, beforeEach, afterAll } from "vitest";
 import { testApiHandler } from "next-test-api-route-handler";
 import * as productsHandler from "@/app/api/products/route";
 import { db } from "@/lib/db";
+
+// El guard de escritura se mockea para permitir las mutaciones: aquí probamos la
+// lógica de la Route Handler contra la BD, no la autenticación (cubierta en
+// src/lib/api-auth.test.ts).
+vi.mock("@/lib/api-auth", () => ({ requireWriteAccess: vi.fn(async () => null) }));
 
 // Tests de integración REALES: ejercitan la Route Handler completa (zod +
 // Prisma) contra el schema `test` de Postgres. Requieren Docker arriba y el

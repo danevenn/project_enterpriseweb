@@ -59,6 +59,24 @@ describe("withRouteErrors", () => {
     expect(await res.json()).toEqual({ ok: true });
   });
 
+  it("cortocircuita con la respuesta del guard cuando este la devuelve", async () => {
+    const handlerFn = vi.fn(async () => Response.json({ ok: true }));
+    const handler = withRouteErrors(handlerFn, {
+      guard: async () => Response.json({ message: "denegado" }, { status: 403 }),
+    });
+    const res = await handler(req);
+    expect(res.status).toBe(403);
+    expect(handlerFn).not.toHaveBeenCalled(); // el handler no llega a ejecutarse
+  });
+
+  it("ejecuta el handler cuando el guard permite (devuelve null)", async () => {
+    const handler = withRouteErrors(async () => Response.json({ ok: true }), {
+      guard: async () => null,
+    });
+    const res = await handler(req);
+    expect(res.status).toBe(200);
+  });
+
   it("convierte un JSON malformado (SyntaxError) en 400", async () => {
     const handler = withRouteErrors(async () => {
       throw new SyntaxError("Unexpected token");

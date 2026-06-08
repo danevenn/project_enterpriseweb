@@ -1,4 +1,4 @@
-# Estrategia de testing — Carpintería Los Artesanos
+# Estrategia de testing — Taller Sagra
 
 Esta suite cubre el **módulo de inventario de productos** (catálogo de muebles
 terminados: `Product` / `ProductCategory`). En este proyecto los "materiales de

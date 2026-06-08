@@ -1,22 +1,42 @@
-# Carpintería Los Artesanos — project_enterpriseweb
+# Taller Sagra · Ebanistería de autor
 
 [![CI](https://github.com/danevenn/project_enterpriseweb/actions/workflows/ci.yml/badge.svg)](https://github.com/danevenn/project_enterpriseweb/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/danevenn/project_enterpriseweb/branch/main/graph/badge.svg)](https://codecov.io/gh/danevenn/project_enterpriseweb)
 [![TypeScript strict](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)](tsconfig.json)
 
-Web unificada para un cliente de carpintería: **sitio público** + **panel de gestión privado**.
-Unifica en un solo código tres proyectos previos (sitio `task6`, autenticación `task7`,
-inventario `task8`).
+Presencia digital completa para un taller de ebanistería: una **web pública** que presenta el
+oficio y el portfolio, y un **panel de gestión privado** desde el que el taller administra su
+inventario y los proyectos que se muestran al público. Un solo producto, dos audiencias —el cliente
+final y el equipo del taller— sobre una base técnica moderna y probada.
 
-🔗 **En producción:** https://projectenterpriseweb.vercel.app
+🔗 **Demo en vivo:** **https://projectenterpriseweb.vercel.app**
+🔑 **Acceso de solo lectura al panel:** botón *"Entrar como demostración"* en
+[`/login`](https://projectenterpriseweb.vercel.app/login) — ver [`docs/demo.md`](docs/demo.md).
+
+> *Taller Sagra es una marca ficticia, ambientada en Illescas (La Sagra, Toledo), creada para
+> mostrar el producto de principio a fin: diseño, contenido, datos reales en base de datos,
+> autenticación y operativa de panel.*
+
+## El producto
+
+Un taller artesanal necesita transmitir oficio y, a la vez, gestionar su día a día sin fricción.
+Esta aplicación cubre ambas cosas:
+
+- **Para el visitante** — una web cuidada que cuenta quién es el taller, qué hace y qué ha hecho,
+  con un portfolio de proyectos detallado y un canal de contacto directo.
+- **Para el taller** — un panel privado donde mantener el inventario (materiales y catálogo) y
+  publicar o editar el portfolio que ve el público, con control de acceso por sesión.
+
+El contenido público se sirve **desde base de datos**: lo que el taller edita en el panel es lo que
+ve el cliente, sin tocar código ni volver a desplegar.
 
 ## Qué incluye
 
 - **Sitio público** (`/`, `/proyectos`, `/proyectos/[slug]`, `/sobre-nosotros`, `/contacto`):
-  portfolio del taller, servido desde Postgres.
+  presentación del taller y portfolio servido desde Postgres.
 - **Autenticación** (`/login`, `/register`): NextAuth v4 con Firebase (email/contraseña) y
-  GitHub OAuth. El panel queda protegido por `proxy.ts`.
-- **Panel de gestión** (`/panel`), tras login:
+  GitHub OAuth. El panel queda protegido a nivel de servidor por `proxy.ts`.
+- **Panel de gestión** (`/panel`), tras iniciar sesión:
   - **Materiales** — inventario de taller (maderas, herrajes, acabados, consumibles) con
     unidades, stock, mínimo, coste y proveedor; aviso de stock bajo.
   - **Productos** — catálogo de muebles/piezas con precio, stock e imagen; ajuste de stock
@@ -59,7 +79,7 @@ app↔BD paga ~3 ms en lugar de los ~90 ms que costaba con la BD en EE. UU. (ver
 
 ## Decisiones técnicas
 
-Las decisiones de arquitectura importantes están documentadas como
+Las decisiones de arquitectura relevantes están documentadas como
 **[ADRs](docs/adr/)** (Architecture Decision Records). Resumen:
 
 | Decisión | Alternativas descartadas | Razón principal |
@@ -69,7 +89,7 @@ Las decisiones de arquitectura importantes están documentadas como
 | [Pirámide de tests](docs/adr/ADR-003-estrategia-testing.md) | Solo E2E · sin tests | Confianza con coste proporcionado: mucho unitario barato, poca integración, mínimo E2E |
 | [Zustand para UI](docs/adr/ADR-004-zustand-estado-ui.md) | React Context · estado en URL | Evitar re-renders en cascada y prop-drilling de los filtros del inventario |
 
-## Testing
+## Calidad y testing
 
 Suite siguiendo la **pirámide de tests** (documentada en [`docs/testing/`](docs/testing/)):
 
@@ -93,6 +113,14 @@ El CI (GitHub Actions) ejecuta en cada push y PR: **typecheck**, **lint**, **tes
 unitarios/componente** (con cobertura), **integración** y **E2E** (Playwright). La integración y el
 E2E usan un **Postgres efímero** como *service container* (sembrado para el E2E); el E2E hace **login
 real** contra Firebase con un usuario de test y se omite en PRs de *forks* (sin acceso a los secrets).
+
+## Seguridad de acceso
+
+- El panel (`/panel`) está protegido en el **servidor** por `src/proxy.ts` (`withAuth`).
+- Las **mutaciones** de la API (`POST`/`PATCH`/`DELETE`) exigen sesión vía `requireWriteAccess()`
+  ([`src/lib/api-auth.ts`](src/lib/api-auth.ts)): **401** sin sesión, **403** para la cuenta de
+  demostración (solo lectura) y permitido al resto. Las lecturas (`GET`) son públicas.
+- `proxy.ts` añade además cabeceras de seguridad a todas las respuestas.
 
 ## Desarrollo local
 
@@ -137,7 +165,13 @@ pnpm dev                           # http://localhost:3000
 - `src/app/panel/` — panel privado (layout con sidebar + guardia de sesión).
 - `src/app/api/` — route handlers: `auth`, `products`, `materials`, `product-categories`,
   `material-categories`, `projects`.
-- `src/components/` — UI (`ui/`, `site/`, `panel/`) y vistas del inventario/portfolio.
+- `src/components/` — UI por dominio:
+  - `ui/` — design system (shadcn / base-ui).
+  - `site/` — componentes del sitio público (hero, secciones, fichas de proyecto).
+  - `panel/` — chrome del panel (sidebar, barra móvil).
+  - `inventory/` — gestión de productos, materiales y categorías.
+  - `portfolio/` — gestión del portfolio de proyectos.
+  - `motion/`, `icons/` — animaciones e iconos.
 - `src/lib/` — `db`, `auth`, `firebase`, `validations` (zod), `product-utils`, `format`, helpers.
 - `src/stores/` — Zustand (filtros del inventario). `src/hooks/` — TanStack Query.
 - `src/test/`, `e2e/` — mocks MSW, tests de integración y E2E (Playwright + Page Objects).
@@ -154,8 +188,8 @@ pnpm dev                           # http://localhost:3000
 | [`docs/auditoria/deuda-tecnica.md`](docs/auditoria/deuda-tecnica.md) | Auditoría de calidad: hallazgos y cómo se resolvieron |
 | [`docs/portfolio/reflexion-final.md`](docs/portfolio/reflexion-final.md) | Reflexión técnica sobre el proyecto |
 
-## Pendiente / notas
+## Hoja de ruta
 
-- Los campos compuestos de proyecto (dimensiones, proceso, testimonio) se conservan al editar
-  pero aún no son editables desde el formulario del panel.
-- Subida de imágenes: por ahora se introducen como URL.
+- Edición de los campos compuestos de proyecto (dimensiones, proceso, testimonio) desde el
+  formulario del panel: hoy se conservan al editar, pero aún no son editables.
+- Subida de imágenes: por ahora las imágenes se introducen como URL.

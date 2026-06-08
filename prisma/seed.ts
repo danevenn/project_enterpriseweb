@@ -115,7 +115,7 @@ async function main() {
       stock: new Prisma.Decimal("32.500"),
       minStock: new Prisma.Decimal("10.000"),
       costPerUnit: new Prisma.Decimal("78.00"),
-      supplier: "Maderas Olot",
+      supplier: "Maderas del Tajo",
       categoryId: maderas.id,
     },
     {
@@ -135,7 +135,7 @@ async function main() {
       stock: new Prisma.Decimal("120.000"),
       minStock: new Prisma.Decimal("30.000"),
       costPerUnit: new Prisma.Decimal("6.80"),
-      supplier: "Maderas Olot",
+      supplier: "Maderas del Tajo",
       categoryId: maderas.id,
     },
     {

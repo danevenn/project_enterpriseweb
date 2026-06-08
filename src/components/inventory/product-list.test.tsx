@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import { http, HttpResponse } from "msw";
-import { ProductList } from "@/components/product-list";
+import { ProductList } from "@/components/inventory/product-list";
 import { server } from "@/test/mocks/server";
 import { createWrapper } from "@/test/utils";
 

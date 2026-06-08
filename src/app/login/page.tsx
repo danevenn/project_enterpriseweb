@@ -79,7 +79,7 @@ function LoginForm() {
       <CardHeader className="space-y-2 text-center">
         <CardTitle className="font-heading text-2xl">Acceso al panel</CardTitle>
         <CardDescription>
-          Carpintería Los Artesanos · gestión interna
+          Taller Sagra · gestión interna
         </CardDescription>
       </CardHeader>
 

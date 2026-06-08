@@ -23,26 +23,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://task6-site-woodwork.vercel.app"),
+  metadataBase: new URL("https://projectenterpriseweb.vercel.app"),
   title: {
-    default: "Carpintería Los Artesanos — Muebles a medida y restauración",
-    template: "%s · Carpintería Los Artesanos",
+    default: "Taller Sagra — Ebanistería de autor en La Sagra, Toledo",
+    template: "%s · Taller Sagra",
   },
   description:
-    "Taller artesanal especializado en muebles a medida, restauración de mobiliario antiguo y carpintería estructural. Trabajo manual con maderas nobles.",
+    "Ebanistería de autor en Illescas (La Sagra, Toledo). Muebles a medida, restauración de mobiliario antiguo y carpintería estructural con maderas nobles, entre Toledo y Madrid.",
   keywords: [
-    "carpintería",
-    "muebles a medida",
-    "restauración",
-    "artesanía",
-    "madera",
     "ebanistería",
+    "muebles a medida",
+    "restauración de muebles",
+    "carpintería Illescas",
+    "carpintería Toledo",
+    "La Sagra",
+    "madera",
   ],
-  authors: [{ name: "Carpintería Los Artesanos" }],
+  authors: [{ name: "Taller Sagra" }],
   openGraph: {
     type: "website",
     locale: "es_ES",
-    siteName: "Carpintería Los Artesanos",
+    siteName: "Taller Sagra",
   },
   robots: { index: true, follow: true },
 };

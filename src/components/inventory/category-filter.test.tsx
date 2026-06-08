@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { CategoryFilter } from "@/components/category-filter";
+import { CategoryFilter } from "@/components/inventory/category-filter";
 import { useUIStore } from "@/stores/ui-store";
 import { createWrapper } from "@/test/utils";
 

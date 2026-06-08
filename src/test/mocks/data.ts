@@ -1,6 +1,6 @@
 import type { ProductWithCategory, ProductCategoryWithCount } from "@/lib/types";
 
-// Datos de prueba alineados con el dominio REAL de Carpintería Los Artesanos:
+// Datos de prueba alineados con el dominio REAL de Taller Sagra:
 // los `Product` son muebles terminados del catálogo (no materiales de taller),
 // y sus categorías son las del seed: "Muebles a medida", "Restauración",
 // "Complementos". El precio llega como string porque la API serializa el

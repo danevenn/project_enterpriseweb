@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { filterProducts, sortProducts, isLowStock } from "@/lib/product-utils";
 import type { ProductWithCategory } from "@/lib/types";
 
-// Muebles reales del catálogo de Carpintería Los Artesanos (no materiales de
+// Muebles reales del catálogo de Taller Sagra (no materiales de
 // taller): la familia Product modela piezas terminadas. El precio es string
 // porque la API serializa el Decimal de Prisma.
 const mockProducts: ProductWithCategory[] = [

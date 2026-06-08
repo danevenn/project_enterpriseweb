@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllProjects } from "@/data/projects";
 
-const SITE = "https://task6-site-woodwork.vercel.app";
+const SITE = "https://projectenterpriseweb.vercel.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const projects = await getAllProjects();

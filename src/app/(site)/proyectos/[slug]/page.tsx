@@ -88,33 +88,31 @@ export default async function ProyectoDetallePage({
         Volver a la galería
       </ButtonLink>
 
-      <Reveal as="header" className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
-        <div>
-          <Badge variant="secondary" className="mb-3">
-            {project.category}
-          </Badge>
-          <h1 className="font-heading text-4xl font-bold leading-tight md:text-5xl">
-            {project.title}
-          </h1>
-          <p className="mt-3 max-w-2xl text-lg text-muted-foreground">
-            {project.shortDescription}
-          </p>
-        </div>
-        <dl className="grid grid-cols-3 gap-4 text-sm md:gap-6">
-          <div>
-            <dt className="flex items-center gap-1 text-muted-foreground">
+      <Reveal as="header">
+        <Badge variant="secondary" className="mb-3">
+          {project.category}
+        </Badge>
+        <h1 className="max-w-4xl font-heading text-4xl font-bold leading-tight md:text-5xl">
+          {project.title}
+        </h1>
+        <p className="mt-4 max-w-3xl text-lg text-muted-foreground">
+          {project.shortDescription}
+        </p>
+        <dl className="mt-8 flex flex-wrap gap-x-12 gap-y-5 border-t border-border/60 pt-6 text-sm">
+          <div className="min-w-24">
+            <dt className="flex items-center gap-1.5 text-muted-foreground">
               <Calendar className="h-3.5 w-3.5" /> Año
             </dt>
             <dd className="mt-1 font-semibold">{project.year}</dd>
           </div>
-          <div>
-            <dt className="flex items-center gap-1 text-muted-foreground">
+          <div className="min-w-24">
+            <dt className="flex items-center gap-1.5 text-muted-foreground">
               <Hammer className="h-3.5 w-3.5" /> Duración
             </dt>
             <dd className="mt-1 font-semibold">{project.durationWeeks} sem.</dd>
           </div>
-          <div>
-            <dt className="flex items-center gap-1 text-muted-foreground">
+          <div className="min-w-24">
+            <dt className="flex items-center gap-1.5 text-muted-foreground">
               <MapPin className="h-3.5 w-3.5" /> Cliente
             </dt>
             <dd className="mt-1 font-semibold">{project.client}</dd>

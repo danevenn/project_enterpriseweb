@@ -32,8 +32,9 @@ export default async function HomePage() {
             Tres oficios, una misma mano
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Diseñamos, restauramos y construimos en madera. Cada encargo recibe
-            el mismo cuidado, sin importar su escala.
+            Diseñamos, restauramos y construimos en madera desde el taller de
+            Illescas. Cada encargo recibe el mismo cuidado, sin importar su
+            escala.
           </p>
         </Reveal>
         <ServicesSection services={services} />
@@ -115,8 +116,8 @@ export default async function HomePage() {
             Tienes una idea. Nosotros, el tiempo para escucharla.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-primary-foreground/80">
-            Estudiamos cada encargo en detalle. Un café, una visita y, si
-            encajamos, una pieza que dure generaciones.
+            Estudiamos cada encargo en detalle. Un café en el taller, una visita
+            a tu espacio y, si encajamos, una pieza que dure generaciones.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/contacto" size="lg" variant="secondary">

@@ -2,7 +2,7 @@
 
 Los E2E recorren el flujo completo en un navegador real (Chromium) contra el
 servidor de Next y la base de datos reales. Cubren el inventario de
-**Carpintería Los Artesanos** desde el panel privado `/panel/productos`.
+**Taller Sagra** desde el panel privado `/panel/productos`.
 
 ## El Page Object Model (POM)
 

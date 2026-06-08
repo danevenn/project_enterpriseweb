@@ -1,11 +1,12 @@
-# project_enterpriseweb
+# project_enterpriseweb — Taller Sagra
 
-Web unificada de "Carpintería Los Artesanos": sitio público + panel privado. Unifica los
-antiguos task6 (sitio), task7 (auth) y task8 (inventario). Next.js 16 App Router.
+Web de "Taller Sagra" (ebanistería en Illescas, La Sagra, Toledo): sitio público + panel privado.
+Marca ficticia para portfolio. Next.js 16 App Router.
 
 ## Stack
 - **Next.js 16** (App Router, Server Components/Actions, `src/`) + **React 19.2** + **TS 5** strict
-- **Prisma 6** + **PostgreSQL 16** (Docker local, puerto **5433**)
+- **Prisma 6** + **PostgreSQL** — **Neon** en EU (Frankfurt `fra1`) como BD principal;
+  Docker local (puerto **5433**) como alternativa offline
 - **NextAuth v4** + **Firebase Auth** (identidades, estrategia JWT) · **zod 4**
 - **@tanstack/react-query** · **react-hook-form** · **zustand** · **motion**
 - **Tailwind v4** · shadcn/base-ui · ESLint · **pnpm**
@@ -27,6 +28,9 @@ antiguos task6 (sitio), task7 (auth) y task8 (inventario). Next.js 16 App Router
   `projects` (patrón: zod `safeParse` + `validationError` de `src/lib/api.ts`).
 - `src/data/projects.ts` — tipos de dominio + getters Prisma (las páginas públicas no cambian).
   Los datos semilla del portfolio viven en `prisma/seed-data/projects.ts`.
+- `src/components/` — `ui/` (design system), `site/` (público), `panel/` (chrome del panel),
+  `inventory/` (gestión de productos/materiales/categorías), `portfolio/` (gestión de proyectos),
+  `motion/`, `icons/`.
 - `src/lib/` — `db`, `auth`, `firebase`, `validations` (zod), `types`, `format`, `http`.
 
 ## Comandos

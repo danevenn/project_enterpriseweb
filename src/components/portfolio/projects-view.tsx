@@ -1,21 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { ExternalLink, Pencil, Plus, Star, Trash2 } from "lucide-react";
+import { ExternalLink, Pencil, Plus, Star } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ButtonLink } from "@/components/ui/button-link";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { ConfirmDeleteDialog } from "@/components/ui/confirm-delete-dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -30,43 +20,30 @@ import { ProjectForm } from "./project-form";
 import type { ProjectListItem } from "@/lib/types";
 
 function DeleteButton({ project }: { project: ProjectListItem }) {
-  const [open, setOpen] = useState(false);
   const deleteMutation = useDeleteProjectMutation();
 
-  const onDelete = () => {
-    deleteMutation.mutate(project.id, {
-      onSuccess: () => {
-        toast.success("Proyecto borrado");
-        setOpen(false);
-      },
-      onError: (e) => toast.error(e instanceof Error ? e.message : "Error al borrar"),
-    });
-  };
-
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={
-          <Button variant="destructive" size="icon-sm" aria-label="Borrar proyecto">
-            <Trash2 className="size-4" />
-          </Button>
-        }
-      />
-      <DialogContent className="sm:max-w-sm">
-        <DialogHeader>
-          <DialogTitle>Borrar proyecto</DialogTitle>
-          <DialogDescription>
-            ¿Seguro que quieres borrar “{project.title}”? Se quitará del portfolio público.
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <DialogClose render={<Button variant="outline">Cancelar</Button>} />
-          <Button variant="destructive" onClick={onDelete} disabled={deleteMutation.isPending}>
-            {deleteMutation.isPending ? "Borrando..." : "Borrar"}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <ConfirmDeleteDialog
+      triggerAriaLabel="Borrar proyecto"
+      title="Borrar proyecto"
+      description={
+        <>
+          ¿Seguro que quieres borrar “{project.title}”? Se quitará del portfolio
+          público.
+        </>
+      }
+      isPending={deleteMutation.isPending}
+      onConfirm={(close) =>
+        deleteMutation.mutate(project.id, {
+          onSuccess: () => {
+            toast.success("Proyecto borrado");
+            close();
+          },
+          onError: (e) =>
+            toast.error(e instanceof Error ? e.message : "Error al borrar"),
+        })
+      }
+    />
   );
 }
 

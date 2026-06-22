@@ -1,20 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { ConfirmDeleteDialog } from "@/components/ui/confirm-delete-dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   Table,
@@ -32,50 +22,30 @@ import { MaterialCategoryForm } from "./material-category-form";
 import type { MaterialCategoryWithCount } from "@/lib/types";
 
 function DeleteButton({ category }: { category: MaterialCategoryWithCount }) {
-  const [open, setOpen] = useState(false);
   const deleteMutation = useDeleteMaterialCategoryMutation();
   const hasMaterials = category._count.materials > 0;
 
-  const onDelete = () => {
-    deleteMutation.mutate(category.id, {
-      onSuccess: () => {
-        toast.success("Categoría borrada");
-        setOpen(false);
-      },
-      onError: (e) => toast.error(e instanceof Error ? e.message : "Error al borrar"),
-    });
-  };
-
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={
-          <Button
-            variant="destructive"
-            size="icon-sm"
-            disabled={hasMaterials}
-            title={hasMaterials ? "No se puede borrar: tiene materiales asociados" : "Borrar"}
-            aria-label="Borrar categoría"
-          >
-            <Trash2 className="size-4" />
-          </Button>
-        }
-      />
-      <DialogContent className="sm:max-w-sm">
-        <DialogHeader>
-          <DialogTitle>Borrar categoría</DialogTitle>
-          <DialogDescription>
-            ¿Seguro que quieres borrar “{category.name}”?
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <DialogClose render={<Button variant="outline">Cancelar</Button>} />
-          <Button variant="destructive" onClick={onDelete} disabled={deleteMutation.isPending}>
-            {deleteMutation.isPending ? "Borrando..." : "Borrar"}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <ConfirmDeleteDialog
+      triggerAriaLabel="Borrar categoría"
+      triggerTitle={
+        hasMaterials ? "No se puede borrar: tiene materiales asociados" : "Borrar"
+      }
+      disabled={hasMaterials}
+      title="Borrar categoría"
+      description={<>¿Seguro que quieres borrar “{category.name}”?</>}
+      isPending={deleteMutation.isPending}
+      onConfirm={(close) =>
+        deleteMutation.mutate(category.id, {
+          onSuccess: () => {
+            toast.success("Categoría borrada");
+            close();
+          },
+          onError: (e) =>
+            toast.error(e instanceof Error ? e.message : "Error al borrar"),
+        })
+      }
+    />
   );
 }
 

@@ -1,19 +1,10 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Pencil, Plus, Search, Trash2, TriangleAlert } from "lucide-react";
+import { Pencil, Plus, Search, TriangleAlert } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { ConfirmDeleteDialog } from "@/components/ui/confirm-delete-dialog";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -49,43 +40,30 @@ const SORT_LABELS: Record<MaterialFilters["sortBy"], string> = {
 };
 
 function DeleteButton({ material }: { material: MaterialWithCategory }) {
-  const [open, setOpen] = useState(false);
   const deleteMutation = useDeleteMaterialMutation();
 
-  const onDelete = () => {
-    deleteMutation.mutate(material.id, {
-      onSuccess: () => {
-        toast.success("Material borrado");
-        setOpen(false);
-      },
-      onError: (e) => toast.error(e instanceof Error ? e.message : "Error al borrar"),
-    });
-  };
-
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger
-        render={
-          <Button variant="destructive" size="icon-sm" aria-label="Borrar material">
-            <Trash2 className="size-4" />
-          </Button>
-        }
-      />
-      <DialogContent className="sm:max-w-sm">
-        <DialogHeader>
-          <DialogTitle>Borrar material</DialogTitle>
-          <DialogDescription>
-            ¿Seguro que quieres borrar “{material.name}”? Esta acción no se puede deshacer.
-          </DialogDescription>
-        </DialogHeader>
-        <DialogFooter>
-          <DialogClose render={<Button variant="outline">Cancelar</Button>} />
-          <Button variant="destructive" onClick={onDelete} disabled={deleteMutation.isPending}>
-            {deleteMutation.isPending ? "Borrando..." : "Borrar"}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+    <ConfirmDeleteDialog
+      triggerAriaLabel="Borrar material"
+      title="Borrar material"
+      description={
+        <>
+          ¿Seguro que quieres borrar “{material.name}”? Esta acción no se puede
+          deshacer.
+        </>
+      }
+      isPending={deleteMutation.isPending}
+      onConfirm={(close) =>
+        deleteMutation.mutate(material.id, {
+          onSuccess: () => {
+            toast.success("Material borrado");
+            close();
+          },
+          onError: (e) =>
+            toast.error(e instanceof Error ? e.message : "Error al borrar"),
+        })
+      }
+    />
   );
 }
 
